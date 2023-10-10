@@ -16,7 +16,7 @@ import org.apache.commons.compress.archivers.tar.TarArchiveEntry;
 import org.apache.commons.compress.archivers.tar.TarArchiveInputStream;
 import org.apache.commons.compress.compressors.xz.XZCompressorInputStream;
 
-public class Extract {
+public class Extractor {
     private static final PosixFilePermission[] PERMISSIONS = {
         PosixFilePermission.OTHERS_EXECUTE, PosixFilePermission.OTHERS_WRITE, PosixFilePermission.OTHERS_READ,
         PosixFilePermission.GROUP_EXECUTE, PosixFilePermission.GROUP_WRITE, PosixFilePermission.GROUP_READ,
@@ -26,7 +26,7 @@ public class Extract {
 
     private static final String TEMP_DIR_PREFIX = "ffmpegtest-";
     private static final String LINUX_NATIVES_ARCHIVE = "natives/ffmpeg-master-latest-linux64-lgpl-shared.tar.xz";
-    private static final Path TEMP_DIR;
+    public static final Path TEMP_DIR;
 
     static {
         try {
@@ -58,9 +58,11 @@ public class Extract {
                 throw new RuntimeException("Unable to clean up temp dir.", e);
             }
         }));
+    }
 
+    public static void extractNatives() {
         System.out.println("Extracting natives...");
-        try (InputStream is = Extract.class.getResourceAsStream(LINUX_NATIVES_ARCHIVE)) {
+        try (InputStream is = Extractor.class.getResourceAsStream(LINUX_NATIVES_ARCHIVE)) {
             if (is == null) throw new RuntimeException("Failed to find " + LINUX_NATIVES_ARCHIVE);
 
             try (XZCompressorInputStream xzis = new XZCompressorInputStream(is);
