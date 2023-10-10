@@ -22,7 +22,6 @@ public class Extractor {
         PosixFilePermission.GROUP_EXECUTE, PosixFilePermission.GROUP_WRITE, PosixFilePermission.GROUP_READ,
         PosixFilePermission.OWNER_EXECUTE, PosixFilePermission.OWNER_WRITE, PosixFilePermission.OWNER_READ
     };
-    private static final String NOT_FOUND_STRING = ": cannot open shared object file: No such file or directory";
 
     private static final String TEMP_DIR_PREFIX = "ffmpegtest-";
     private static final String LINUX_NATIVES_ARCHIVE = "natives/ffmpeg-master-latest-linux64-lgpl-shared.tar.xz";
@@ -101,35 +100,5 @@ public class Extractor {
         }
 
         Files.setPosixFilePermissions(outputFile, perms);
-    }
-
-    public static Path load(String name) {
-        Path loading = TEMP_DIR.resolve(name);
-        load(loading);
-
-        return loading;
-    }
-
-    private static void load(Path toLoad) {
-        if (!Files.exists(toLoad)) throw new RuntimeException("Path " + toLoad + " does not exist");
-
-        boolean loading = true;
-        while (loading) {
-            try {
-                System.load(toLoad.toAbsolutePath().toString());
-                loading = false;
-            } catch (UnsatisfiedLinkError e) {
-                String message = e.getMessage();
-                if (message.endsWith(NOT_FOUND_STRING)) {
-                    String messageStart = message.substring(0, message.length() - NOT_FOUND_STRING.length());
-                    String missingLibrary = messageStart.substring(messageStart.lastIndexOf(": ") + 2);
-
-                    Path depPath = toLoad.getParent().resolve(missingLibrary);
-                    load(depPath);
-                } else {
-                    throw e;
-                }
-            }
-        }
     }
 }
