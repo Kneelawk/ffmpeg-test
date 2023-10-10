@@ -4,6 +4,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 
+import org.ffmpeg.libavformat.AVFormatContext;
 import org.ffmpeg.libavformat.avformat_h;
 
 public class FfmpegTest {
@@ -19,24 +20,29 @@ public class FfmpegTest {
         System.out.println("Loading file...");
 
         try (Arena confined = Arena.ofConfined()) {
-            MemorySegment ctxHolder = confined.allocate(ValueLayout.ADDRESS);
+            MemorySegment ctxPtrPtr = confined.allocate(ValueLayout.ADDRESS);
             MemorySegment url = confined.allocateUtf8String("tears_of_steel_1080p.webm");
 
-            int res = avformat_h.avformat_open_input(ctxHolder, url, MemorySegment.NULL, MemorySegment.NULL);
+            int res = avformat_h.avformat_open_input(ctxPtrPtr, url, MemorySegment.NULL, MemorySegment.NULL);
             if (res != 0) {
                 System.err.println("Error opening file.");
                 return;
             }
 
-            MemorySegment ctx = ctxHolder.get(ValueLayout.ADDRESS, 0);
+            MemorySegment ctxPtr = ctxPtrPtr.get(ValueLayout.ADDRESS, 0);
 
-            res = avformat_h.avformat_find_stream_info(ctx, MemorySegment.NULL);
+            res = avformat_h.avformat_find_stream_info(ctxPtr, MemorySegment.NULL);
             if (res < 0) {
                 System.err.println("Error finding stream info.");
                 return;
             }
 
-            avformat_h.av_dump_format(ctx, 0, url, 0);
+            avformat_h.av_dump_format(ctxPtr, 0, url, 0);
+
+            MemorySegment ctx = AVFormatContext.ofAddress(ctxPtr, confined);
+
+            int streamCount = AVFormatContext.nb_streams$get(ctx);
+            System.out.println("Stream count: " + streamCount);
         }
     }
 }
