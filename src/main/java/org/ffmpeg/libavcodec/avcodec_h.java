@@ -17,6 +17,22 @@ public class avcodec_h  {
     public static final OfFloat C_FLOAT = JAVA_FLOAT;
     public static final OfDouble C_DOUBLE = JAVA_DOUBLE;
     public static final AddressLayout C_POINTER = RuntimeHelper.POINTER;
+    public static MethodHandle avcodec_close$MH() {
+        return RuntimeHelper.requireNonNull(constants$36.const$2,"avcodec_close");
+    }
+    /**
+     * {@snippet :
+     * int avcodec_close(AVCodecContext* avctx);
+     * }
+     */
+    public static int avcodec_close(MemorySegment avctx) {
+        var mh$ = avcodec_close$MH();
+        try {
+            return (int)mh$.invokeExact(avctx);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
 }
 
 

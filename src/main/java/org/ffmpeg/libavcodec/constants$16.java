@@ -11,10 +11,12 @@ final class constants$16 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$16() {}
-    static final VarHandle const$0 = constants$0.const$0.varHandle(PathElement.groupElement("max_qdiff"));
-    static final VarHandle const$1 = constants$0.const$0.varHandle(PathElement.groupElement("rc_buffer_size"));
-    static final VarHandle const$2 = constants$0.const$0.varHandle(PathElement.groupElement("rc_override_count"));
-    static final VarHandle const$3 = constants$0.const$0.varHandle(PathElement.groupElement("rc_override"));
-    static final VarHandle const$4 = constants$0.const$0.varHandle(PathElement.groupElement("rc_max_rate"));
-    static final VarHandle const$5 = constants$0.const$0.varHandle(PathElement.groupElement("rc_min_rate"));
+    static final VarHandle const$0 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("mb_cmp"));
+    static final VarHandle const$1 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("ildct_cmp"));
+    static final VarHandle const$2 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("dia_size"));
+    static final VarHandle const$3 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("last_predictor_count"));
+    static final VarHandle const$4 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("me_pre_cmp"));
+    static final VarHandle const$5 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("pre_dia_size"));
 }
+
+

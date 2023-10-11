@@ -11,15 +11,12 @@ final class constants$5 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$5() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(AVCodecContext.get_format.class, "apply", constants$5.const$0);
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        constants$5.const$0
-    );
-    static final VarHandle const$3 = constants$0.const$0.varHandle(PathElement.groupElement("get_format"));
-    static final VarHandle const$4 = constants$0.const$0.varHandle(PathElement.groupElement("max_b_frames"));
-    static final VarHandle const$5 = constants$0.const$0.varHandle(PathElement.groupElement("b_quant_factor"));
+    static final VarHandle const$0 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("field_order"));
+    static final VarHandle const$1 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("color_range"));
+    static final VarHandle const$2 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("color_primaries"));
+    static final VarHandle const$3 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("color_trc"));
+    static final VarHandle const$4 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("color_space"));
+    static final VarHandle const$5 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("chroma_location"));
 }
+
+

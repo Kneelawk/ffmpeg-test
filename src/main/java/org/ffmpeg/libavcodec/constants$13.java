@@ -11,10 +11,14 @@ final class constants$13 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$13() {}
-    static final VarHandle const$0 = constants$0.const$0.varHandle(PathElement.groupElement("channels"));
-    static final VarHandle const$1 = constants$0.const$0.varHandle(PathElement.groupElement("sample_fmt"));
-    static final VarHandle const$2 = constants$0.const$0.varHandle(PathElement.groupElement("frame_size"));
-    static final VarHandle const$3 = constants$0.const$0.varHandle(PathElement.groupElement("frame_number"));
-    static final VarHandle const$4 = constants$0.const$0.varHandle(PathElement.groupElement("block_align"));
-    static final VarHandle const$5 = constants$0.const$0.varHandle(PathElement.groupElement("cutoff"));
+    static final MethodHandle const$0 = RuntimeHelper.upcallHandle(AVCodecContext.get_format.class, "apply", constants$12.const$5);
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        constants$12.const$5
+    );
+    static final VarHandle const$2 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("get_format"));
+    static final VarHandle const$3 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("max_b_frames"));
+    static final VarHandle const$4 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("b_quant_factor"));
+    static final VarHandle const$5 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("b_quant_offset"));
 }
+
+

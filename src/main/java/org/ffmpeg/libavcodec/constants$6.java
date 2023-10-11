@@ -11,10 +11,12 @@ final class constants$6 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$6() {}
-    static final VarHandle const$0 = constants$0.const$0.varHandle(PathElement.groupElement("b_quant_offset"));
-    static final VarHandle const$1 = constants$0.const$0.varHandle(PathElement.groupElement("has_b_frames"));
-    static final VarHandle const$2 = constants$0.const$0.varHandle(PathElement.groupElement("i_quant_factor"));
-    static final VarHandle const$3 = constants$0.const$0.varHandle(PathElement.groupElement("i_quant_offset"));
-    static final VarHandle const$4 = constants$0.const$0.varHandle(PathElement.groupElement("lumi_masking"));
-    static final VarHandle const$5 = constants$0.const$0.varHandle(PathElement.groupElement("temporal_cplx_masking"));
+    static final VarHandle const$0 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("video_delay"));
+    static final VarHandle const$1 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("channel_layout"));
+    static final VarHandle const$2 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("channels"));
+    static final VarHandle const$3 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("sample_rate"));
+    static final VarHandle const$4 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("block_align"));
+    static final VarHandle const$5 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("frame_size"));
 }
+
+

@@ -11,20 +11,12 @@ final class constants$21 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$21() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        constants$20.const$4
-    );
-    static final VarHandle const$1 = constants$0.const$0.varHandle(PathElement.groupElement("execute"));
-    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_INT
-    );
-    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(AVCodecContext.execute2.class, "apply", constants$21.const$2);
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        constants$21.const$2
-    );
-    static final VarHandle const$5 = constants$0.const$0.varHandle(PathElement.groupElement("execute2"));
+    static final VarHandle const$0 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("sample_fmt"));
+    static final VarHandle const$1 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("frame_size"));
+    static final VarHandle const$2 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("frame_number"));
+    static final VarHandle const$3 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("block_align"));
+    static final VarHandle const$4 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("cutoff"));
+    static final VarHandle const$5 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("channel_layout"));
 }
+
+

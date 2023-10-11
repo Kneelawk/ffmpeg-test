@@ -11,23 +11,18 @@ final class constants$13 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$13() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(AVFormatContext.io_close2.class, "apply", constants$13.const$0);
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        constants$13.const$0
-    );
-    static final VarHandle const$3 = constants$0.const$0.varHandle(PathElement.groupElement("io_close2"));
+    static final VarHandle const$0 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("output_ts_offset"));
+    static final VarHandle const$1 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("dump_separator"));
+    static final VarHandle const$2 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("data_codec_id"));
+    static final VarHandle const$3 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("protocol_whitelist"));
     static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
         RuntimeHelper.POINTER,
         RuntimeHelper.POINTER,
         RuntimeHelper.POINTER,
+        JAVA_INT,
         RuntimeHelper.POINTER
     );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "avformat_open_input",
-        constants$13.const$4
-    );
+    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(AVFormatContext.io_open.class, "apply", constants$13.const$4);
 }
+
+

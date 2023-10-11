@@ -11,10 +11,12 @@ final class constants$19 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$19() {}
-    static final VarHandle const$0 = constants$0.const$0.varHandle(PathElement.groupElement("hwaccel"));
-    static final VarHandle const$1 = constants$0.const$0.varHandle(PathElement.groupElement("hwaccel_context"));
-    static final VarHandle const$2 = constants$0.const$0.varHandle(PathElement.groupElement("dct_algo"));
-    static final VarHandle const$3 = constants$0.const$0.varHandle(PathElement.groupElement("idct_algo"));
-    static final VarHandle const$4 = constants$0.const$0.varHandle(PathElement.groupElement("bits_per_coded_sample"));
-    static final VarHandle const$5 = constants$0.const$0.varHandle(PathElement.groupElement("bits_per_raw_sample"));
+    static final VarHandle const$0 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("keyint_min"));
+    static final VarHandle const$1 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("refs"));
+    static final VarHandle const$2 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("mv0_threshold"));
+    static final VarHandle const$3 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("color_primaries"));
+    static final VarHandle const$4 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("color_trc"));
+    static final VarHandle const$5 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("colorspace"));
 }
+
+

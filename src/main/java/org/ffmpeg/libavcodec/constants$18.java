@@ -11,10 +11,12 @@ final class constants$18 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$18() {}
-    static final VarHandle const$0 = constants$0.const$0.varHandle(PathElement.groupElement("workaround_bugs"));
-    static final VarHandle const$1 = constants$0.const$0.varHandle(PathElement.groupElement("strict_std_compliance"));
-    static final VarHandle const$2 = constants$0.const$0.varHandle(PathElement.groupElement("error_concealment"));
-    static final VarHandle const$3 = constants$0.const$0.varHandle(PathElement.groupElement("debug"));
-    static final VarHandle const$4 = constants$0.const$0.varHandle(PathElement.groupElement("err_recognition"));
-    static final VarHandle const$5 = constants$0.const$0.varHandle(PathElement.groupElement("reordered_opaque"));
+    static final VarHandle const$0 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("intra_dc_precision"));
+    static final VarHandle const$1 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("skip_top"));
+    static final VarHandle const$2 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("skip_bottom"));
+    static final VarHandle const$3 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("mb_lmin"));
+    static final VarHandle const$4 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("mb_lmax"));
+    static final VarHandle const$5 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("bidir_refine"));
 }
+
+

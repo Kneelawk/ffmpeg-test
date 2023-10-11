@@ -11,10 +11,12 @@ final class constants$23 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$23() {}
-    static final VarHandle const$0 = constants$0.const$0.varHandle(PathElement.groupElement("subtitle_header"));
-    static final VarHandle const$1 = constants$0.const$0.varHandle(PathElement.groupElement("subtitle_header_size"));
-    static final VarHandle const$2 = constants$0.const$0.varHandle(PathElement.groupElement("initial_padding"));
-    static final VarHandle const$3 = constants$0.const$0.varHandle(PathElement.groupElement("sw_pix_fmt"));
-    static final VarHandle const$4 = constants$0.const$0.varHandle(PathElement.groupElement("codec_descriptor"));
-    static final VarHandle const$5 = constants$0.const$0.varHandle(PathElement.groupElement("pts_correction_num_faulty_pts"));
+    static final VarHandle const$0 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("get_buffer2"));
+    static final VarHandle const$1 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("qcompress"));
+    static final VarHandle const$2 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("qblur"));
+    static final VarHandle const$3 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("qmin"));
+    static final VarHandle const$4 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("qmax"));
+    static final VarHandle const$5 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("max_qdiff"));
 }
+
+

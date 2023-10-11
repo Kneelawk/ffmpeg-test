@@ -11,10 +11,12 @@ final class constants$10 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$10() {}
-    static final VarHandle const$0 = constants$0.const$0.varHandle(PathElement.groupElement("opaque"));
-    static final VarHandle const$1 = constants$0.const$0.varHandle(PathElement.groupElement("control_message_cb"));
-    static final VarHandle const$2 = constants$0.const$0.varHandle(PathElement.groupElement("output_ts_offset"));
-    static final VarHandle const$3 = constants$0.const$0.varHandle(PathElement.groupElement("dump_separator"));
-    static final VarHandle const$4 = constants$0.const$0.varHandle(PathElement.groupElement("data_codec_id"));
-    static final VarHandle const$5 = constants$0.const$0.varHandle(PathElement.groupElement("protocol_whitelist"));
+    static final VarHandle const$0 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("avio_flags"));
+    static final VarHandle const$1 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("duration_estimation_method"));
+    static final VarHandle const$2 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("skip_initial_bytes"));
+    static final VarHandle const$3 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("correct_ts_overflow"));
+    static final VarHandle const$4 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("seek2any"));
+    static final VarHandle const$5 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("flush_packets"));
 }
+
+

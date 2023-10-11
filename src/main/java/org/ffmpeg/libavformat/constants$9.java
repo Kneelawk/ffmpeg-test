@@ -11,10 +11,12 @@ final class constants$9 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$9() {}
-    static final VarHandle const$0 = constants$0.const$0.varHandle(PathElement.groupElement("io_repositioned"));
-    static final VarHandle const$1 = constants$0.const$0.varHandle(PathElement.groupElement("video_codec"));
-    static final VarHandle const$2 = constants$0.const$0.varHandle(PathElement.groupElement("audio_codec"));
-    static final VarHandle const$3 = constants$0.const$0.varHandle(PathElement.groupElement("subtitle_codec"));
-    static final VarHandle const$4 = constants$0.const$0.varHandle(PathElement.groupElement("data_codec"));
-    static final VarHandle const$5 = constants$0.const$0.varHandle(PathElement.groupElement("metadata_header_padding"));
+    static final VarHandle const$0 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("avoid_negative_ts"));
+    static final VarHandle const$1 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("ts_id"));
+    static final VarHandle const$2 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("audio_preload"));
+    static final VarHandle const$3 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("max_chunk_duration"));
+    static final VarHandle const$4 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("max_chunk_size"));
+    static final VarHandle const$5 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("use_wallclock_as_timestamps"));
 }
+
+

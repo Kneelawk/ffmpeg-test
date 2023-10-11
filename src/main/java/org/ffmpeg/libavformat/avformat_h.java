@@ -18,7 +18,7 @@ public class avformat_h  {
     public static final OfDouble C_DOUBLE = JAVA_DOUBLE;
     public static final AddressLayout C_POINTER = RuntimeHelper.POINTER;
     public static MethodHandle avformat_open_input$MH() {
-        return RuntimeHelper.requireNonNull(constants$13.const$5,"avformat_open_input");
+        return RuntimeHelper.requireNonNull(constants$16.const$3,"avformat_open_input");
     }
     /**
      * {@snippet :
@@ -34,7 +34,7 @@ public class avformat_h  {
         }
     }
     public static MethodHandle avformat_find_stream_info$MH() {
-        return RuntimeHelper.requireNonNull(constants$14.const$0,"avformat_find_stream_info");
+        return RuntimeHelper.requireNonNull(constants$16.const$4,"avformat_find_stream_info");
     }
     /**
      * {@snippet :
@@ -49,8 +49,40 @@ public class avformat_h  {
             throw new AssertionError("should not reach here", ex$);
         }
     }
+    public static MethodHandle av_find_best_stream$MH() {
+        return RuntimeHelper.requireNonNull(constants$16.const$6,"av_find_best_stream");
+    }
+    /**
+     * {@snippet :
+     * int av_find_best_stream(AVFormatContext* ic, enum AVMediaType type, int wanted_stream_nb, int related_stream, struct AVCodec** decoder_ret, int flags);
+     * }
+     */
+    public static int av_find_best_stream(MemorySegment ic, int type, int wanted_stream_nb, int related_stream, MemorySegment decoder_ret, int flags) {
+        var mh$ = av_find_best_stream$MH();
+        try {
+            return (int)mh$.invokeExact(ic, type, wanted_stream_nb, related_stream, decoder_ret, flags);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle avformat_close_input$MH() {
+        return RuntimeHelper.requireNonNull(constants$17.const$1,"avformat_close_input");
+    }
+    /**
+     * {@snippet :
+     * void avformat_close_input(AVFormatContext** s);
+     * }
+     */
+    public static void avformat_close_input(MemorySegment s) {
+        var mh$ = avformat_close_input$MH();
+        try {
+            mh$.invokeExact(s);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
     public static MethodHandle av_dump_format$MH() {
-        return RuntimeHelper.requireNonNull(constants$14.const$2,"av_dump_format");
+        return RuntimeHelper.requireNonNull(constants$17.const$3,"av_dump_format");
     }
     /**
      * {@snippet :

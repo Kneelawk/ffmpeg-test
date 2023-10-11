@@ -11,10 +11,12 @@ final class constants$8 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$8() {}
-    static final VarHandle const$0 = constants$0.const$0.varHandle(PathElement.groupElement("me_sub_cmp"));
-    static final VarHandle const$1 = constants$0.const$0.varHandle(PathElement.groupElement("mb_cmp"));
-    static final VarHandle const$2 = constants$0.const$0.varHandle(PathElement.groupElement("ildct_cmp"));
-    static final VarHandle const$3 = constants$0.const$0.varHandle(PathElement.groupElement("dia_size"));
-    static final VarHandle const$4 = constants$0.const$0.varHandle(PathElement.groupElement("last_predictor_count"));
-    static final VarHandle const$5 = constants$0.const$0.varHandle(PathElement.groupElement("me_pre_cmp"));
+    static final VarHandle const$0 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("av_class"));
+    static final VarHandle const$1 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("log_level_offset"));
+    static final VarHandle const$2 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("codec_type"));
+    static final VarHandle const$3 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("codec"));
+    static final VarHandle const$4 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("codec_id"));
+    static final VarHandle const$5 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("codec_tag"));
 }
+
+

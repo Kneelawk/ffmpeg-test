@@ -11,10 +11,12 @@ final class constants$1 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$1() {}
-    static final VarHandle const$0 = constants$0.const$0.varHandle(PathElement.groupElement("codec_tag"));
-    static final VarHandle const$1 = constants$0.const$0.varHandle(PathElement.groupElement("priv_data"));
-    static final VarHandle const$2 = constants$0.const$0.varHandle(PathElement.groupElement("internal"));
-    static final VarHandle const$3 = constants$0.const$0.varHandle(PathElement.groupElement("opaque"));
-    static final VarHandle const$4 = constants$0.const$0.varHandle(PathElement.groupElement("bit_rate"));
-    static final VarHandle const$5 = constants$0.const$0.varHandle(PathElement.groupElement("bit_rate_tolerance"));
+    static final VarHandle const$0 = constants$0.const$0.varHandle(MemoryLayout.PathElement.groupElement("max_lowres"));
+    static final VarHandle const$1 = constants$0.const$0.varHandle(MemoryLayout.PathElement.groupElement("supported_framerates"));
+    static final VarHandle const$2 = constants$0.const$0.varHandle(MemoryLayout.PathElement.groupElement("pix_fmts"));
+    static final VarHandle const$3 = constants$0.const$0.varHandle(MemoryLayout.PathElement.groupElement("supported_samplerates"));
+    static final VarHandle const$4 = constants$0.const$0.varHandle(MemoryLayout.PathElement.groupElement("sample_fmts"));
+    static final VarHandle const$5 = constants$0.const$0.varHandle(MemoryLayout.PathElement.groupElement("channel_layouts"));
 }
+
+

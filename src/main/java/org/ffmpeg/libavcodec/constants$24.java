@@ -11,10 +11,12 @@ final class constants$24 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$24() {}
-    static final VarHandle const$0 = constants$0.const$0.varHandle(PathElement.groupElement("pts_correction_num_faulty_dts"));
-    static final VarHandle const$1 = constants$0.const$0.varHandle(PathElement.groupElement("pts_correction_last_pts"));
-    static final VarHandle const$2 = constants$0.const$0.varHandle(PathElement.groupElement("pts_correction_last_dts"));
-    static final VarHandle const$3 = constants$0.const$0.varHandle(PathElement.groupElement("sub_charenc"));
-    static final VarHandle const$4 = constants$0.const$0.varHandle(PathElement.groupElement("sub_charenc_mode"));
-    static final VarHandle const$5 = constants$0.const$0.varHandle(PathElement.groupElement("skip_alpha"));
+    static final VarHandle const$0 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("rc_buffer_size"));
+    static final VarHandle const$1 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("rc_override_count"));
+    static final VarHandle const$2 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("rc_override"));
+    static final VarHandle const$3 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("rc_max_rate"));
+    static final VarHandle const$4 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("rc_min_rate"));
+    static final VarHandle const$5 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("rc_max_available_vbv_use"));
 }
+
+

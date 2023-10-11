@@ -11,6 +11,21 @@ final class constants$28 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$28() {}
-    static final VarHandle const$0 = constants$0.const$0.varHandle(PathElement.groupElement("get_encode_buffer"));
-    static final VarHandle const$1 = constants$0.const$0.varHandle(PathElement.groupElement("frame_num"));
+    static final VarHandle const$0 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("thread_count"));
+    static final VarHandle const$1 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("thread_type"));
+    static final VarHandle const$2 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("active_thread_type"));
+    static final FunctionDescriptor const$3 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT
+    );
+    static final MethodHandle const$4 = RuntimeHelper.upcallHandle(AVCodecContext.execute.class, "apply", constants$28.const$3);
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        constants$28.const$3
+    );
 }
+
+

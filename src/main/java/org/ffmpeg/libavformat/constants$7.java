@@ -11,10 +11,12 @@ final class constants$7 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$7() {}
-    static final VarHandle const$0 = constants$0.const$0.varHandle(PathElement.groupElement("max_chunk_size"));
-    static final VarHandle const$1 = constants$0.const$0.varHandle(PathElement.groupElement("use_wallclock_as_timestamps"));
-    static final VarHandle const$2 = constants$0.const$0.varHandle(PathElement.groupElement("avio_flags"));
-    static final VarHandle const$3 = constants$0.const$0.varHandle(PathElement.groupElement("duration_estimation_method"));
-    static final VarHandle const$4 = constants$0.const$0.varHandle(PathElement.groupElement("skip_initial_bytes"));
-    static final VarHandle const$5 = constants$0.const$0.varHandle(PathElement.groupElement("correct_ts_overflow"));
+    static final VarHandle const$0 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("max_picture_buffer"));
+    static final VarHandle const$1 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("nb_chapters"));
+    static final VarHandle const$2 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("chapters"));
+    static final VarHandle const$3 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("metadata"));
+    static final VarHandle const$4 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("start_time_realtime"));
+    static final VarHandle const$5 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("fps_probe_size"));
 }
+
+

@@ -11,10 +11,12 @@ final class constants$5 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$5() {}
-    static final VarHandle const$0 = constants$0.const$0.varHandle(PathElement.groupElement("start_time_realtime"));
-    static final VarHandle const$1 = constants$0.const$0.varHandle(PathElement.groupElement("fps_probe_size"));
-    static final VarHandle const$2 = constants$0.const$0.varHandle(PathElement.groupElement("error_recognition"));
-    static final VarHandle const$3 = constants$0.const$0.varHandle(PathElement.groupElement("debug"));
-    static final VarHandle const$4 = constants$0.const$0.varHandle(PathElement.groupElement("max_interleave_delta"));
-    static final VarHandle const$5 = constants$0.const$0.varHandle(PathElement.groupElement("strict_std_compliance"));
+    static final VarHandle const$0 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("max_delay"));
+    static final VarHandle const$1 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("flags"));
+    static final VarHandle const$2 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("probesize"));
+    static final VarHandle const$3 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("max_analyze_duration"));
+    static final VarHandle const$4 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("key"));
+    static final VarHandle const$5 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("keylen"));
 }
+
+

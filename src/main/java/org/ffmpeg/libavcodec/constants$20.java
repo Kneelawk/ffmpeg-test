@@ -11,17 +11,12 @@ final class constants$20 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$20() {}
-    static final VarHandle const$0 = constants$0.const$0.varHandle(PathElement.groupElement("lowres"));
-    static final VarHandle const$1 = constants$0.const$0.varHandle(PathElement.groupElement("thread_count"));
-    static final VarHandle const$2 = constants$0.const$0.varHandle(PathElement.groupElement("thread_type"));
-    static final VarHandle const$3 = constants$0.const$0.varHandle(PathElement.groupElement("active_thread_type"));
-    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        JAVA_INT
-    );
-    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(AVCodecContext.execute.class, "apply", constants$20.const$4);
+    static final VarHandle const$0 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("color_range"));
+    static final VarHandle const$1 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("chroma_sample_location"));
+    static final VarHandle const$2 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("slices"));
+    static final VarHandle const$3 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("field_order"));
+    static final VarHandle const$4 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("sample_rate"));
+    static final VarHandle const$5 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("channels"));
 }
+
+

@@ -11,10 +11,12 @@ final class constants$26 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$26() {}
-    static final VarHandle const$0 = constants$0.const$0.varHandle(PathElement.groupElement("nb_coded_side_data"));
-    static final VarHandle const$1 = constants$0.const$0.varHandle(PathElement.groupElement("hw_frames_ctx"));
-    static final VarHandle const$2 = constants$0.const$0.varHandle(PathElement.groupElement("trailing_padding"));
-    static final VarHandle const$3 = constants$0.const$0.varHandle(PathElement.groupElement("max_pixels"));
-    static final VarHandle const$4 = constants$0.const$0.varHandle(PathElement.groupElement("hw_device_ctx"));
-    static final VarHandle const$5 = constants$0.const$0.varHandle(PathElement.groupElement("hwaccel_flags"));
+    static final VarHandle const$0 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("strict_std_compliance"));
+    static final VarHandle const$1 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("error_concealment"));
+    static final VarHandle const$2 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("debug"));
+    static final VarHandle const$3 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("err_recognition"));
+    static final VarHandle const$4 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("reordered_opaque"));
+    static final VarHandle const$5 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("hwaccel"));
 }
+
+

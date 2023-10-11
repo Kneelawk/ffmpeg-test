@@ -11,10 +11,12 @@ final class constants$9 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$9() {}
-    static final VarHandle const$0 = constants$0.const$0.varHandle(PathElement.groupElement("pre_dia_size"));
-    static final VarHandle const$1 = constants$0.const$0.varHandle(PathElement.groupElement("me_subpel_quality"));
-    static final VarHandle const$2 = constants$0.const$0.varHandle(PathElement.groupElement("me_range"));
-    static final VarHandle const$3 = constants$0.const$0.varHandle(PathElement.groupElement("slice_flags"));
-    static final VarHandle const$4 = constants$0.const$0.varHandle(PathElement.groupElement("mb_decision"));
-    static final VarHandle const$5 = constants$0.const$0.varHandle(PathElement.groupElement("intra_matrix"));
+    static final VarHandle const$0 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("priv_data"));
+    static final VarHandle const$1 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("internal"));
+    static final VarHandle const$2 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("opaque"));
+    static final VarHandle const$3 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("bit_rate"));
+    static final VarHandle const$4 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("bit_rate_tolerance"));
+    static final VarHandle const$5 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("global_quality"));
 }
+
+

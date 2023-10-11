@@ -11,19 +11,12 @@ final class constants$4 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$4() {}
-    static final VarHandle const$0 = constants$0.const$0.varHandle(PathElement.groupElement("gop_size"));
-    static final VarHandle const$1 = constants$0.const$0.varHandle(PathElement.groupElement("pix_fmt"));
-    static final FunctionDescriptor const$2 = FunctionDescriptor.ofVoid(
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_INT,
-        JAVA_INT,
-        JAVA_INT
-    );
-    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(AVCodecContext.draw_horiz_band.class, "apply", constants$4.const$2);
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        constants$4.const$2
-    );
-    static final VarHandle const$5 = constants$0.const$0.varHandle(PathElement.groupElement("draw_horiz_band"));
+    static final VarHandle const$0 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("bits_per_coded_sample"));
+    static final VarHandle const$1 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("bits_per_raw_sample"));
+    static final VarHandle const$2 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("profile"));
+    static final VarHandle const$3 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("level"));
+    static final VarHandle const$4 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("width"));
+    static final VarHandle const$5 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("height"));
 }
+
+

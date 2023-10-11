@@ -11,10 +11,12 @@ final class constants$27 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$27() {}
-    static final VarHandle const$0 = constants$0.const$0.varHandle(PathElement.groupElement("apply_cropping"));
-    static final VarHandle const$1 = constants$0.const$0.varHandle(PathElement.groupElement("extra_hw_frames"));
-    static final VarHandle const$2 = constants$0.const$0.varHandle(PathElement.groupElement("discard_damaged_percentage"));
-    static final VarHandle const$3 = constants$0.const$0.varHandle(PathElement.groupElement("max_samples"));
-    static final VarHandle const$4 = constants$0.const$0.varHandle(PathElement.groupElement("export_side_data"));
-    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(AVCodecContext.get_encode_buffer.class, "apply", constants$14.const$4);
+    static final VarHandle const$0 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("hwaccel_context"));
+    static final VarHandle const$1 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("dct_algo"));
+    static final VarHandle const$2 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("idct_algo"));
+    static final VarHandle const$3 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("bits_per_coded_sample"));
+    static final VarHandle const$4 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("bits_per_raw_sample"));
+    static final VarHandle const$5 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("lowres"));
 }
+
+

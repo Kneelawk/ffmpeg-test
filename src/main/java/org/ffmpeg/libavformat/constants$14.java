@@ -12,19 +12,18 @@ final class constants$14 {
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$14() {}
     static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        "avformat_find_stream_info",
-        constants$13.const$0
+        constants$13.const$4
     );
-    static final FunctionDescriptor const$1 = FunctionDescriptor.ofVoid(
+    static final VarHandle const$1 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("io_open"));
+    static final FunctionDescriptor const$2 = FunctionDescriptor.ofVoid(
         RuntimeHelper.POINTER,
-        JAVA_INT,
-        RuntimeHelper.POINTER,
-        JAVA_INT
+        RuntimeHelper.POINTER
     );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "av_dump_format",
-        constants$14.const$1
+    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(AVFormatContext.io_close.class, "apply", constants$14.const$2);
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        constants$14.const$2
     );
+    static final VarHandle const$5 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("io_close"));
 }
 
 

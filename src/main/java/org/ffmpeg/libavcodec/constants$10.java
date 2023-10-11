@@ -11,10 +11,12 @@ final class constants$10 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$10() {}
-    static final VarHandle const$0 = constants$0.const$0.varHandle(PathElement.groupElement("inter_matrix"));
-    static final VarHandle const$1 = constants$0.const$0.varHandle(PathElement.groupElement("intra_dc_precision"));
-    static final VarHandle const$2 = constants$0.const$0.varHandle(PathElement.groupElement("skip_top"));
-    static final VarHandle const$3 = constants$0.const$0.varHandle(PathElement.groupElement("skip_bottom"));
-    static final VarHandle const$4 = constants$0.const$0.varHandle(PathElement.groupElement("mb_lmin"));
-    static final VarHandle const$5 = constants$0.const$0.varHandle(PathElement.groupElement("mb_lmax"));
+    static final VarHandle const$0 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("compression_level"));
+    static final VarHandle const$1 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("flags"));
+    static final VarHandle const$2 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("flags2"));
+    static final VarHandle const$3 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("extradata"));
+    static final VarHandle const$4 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("extradata_size"));
+    static final VarHandle const$5 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("ticks_per_frame"));
 }
+
+

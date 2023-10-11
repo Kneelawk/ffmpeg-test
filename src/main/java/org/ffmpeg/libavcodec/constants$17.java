@@ -11,10 +11,12 @@ final class constants$17 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$17() {}
-    static final VarHandle const$0 = constants$0.const$0.varHandle(PathElement.groupElement("rc_max_available_vbv_use"));
-    static final VarHandle const$1 = constants$0.const$0.varHandle(PathElement.groupElement("rc_min_vbv_overflow_use"));
-    static final VarHandle const$2 = constants$0.const$0.varHandle(PathElement.groupElement("rc_initial_buffer_occupancy"));
-    static final VarHandle const$3 = constants$0.const$0.varHandle(PathElement.groupElement("trellis"));
-    static final VarHandle const$4 = constants$0.const$0.varHandle(PathElement.groupElement("stats_out"));
-    static final VarHandle const$5 = constants$0.const$0.varHandle(PathElement.groupElement("stats_in"));
+    static final VarHandle const$0 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("me_subpel_quality"));
+    static final VarHandle const$1 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("me_range"));
+    static final VarHandle const$2 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("slice_flags"));
+    static final VarHandle const$3 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("mb_decision"));
+    static final VarHandle const$4 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("intra_matrix"));
+    static final VarHandle const$5 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("inter_matrix"));
 }
+
+

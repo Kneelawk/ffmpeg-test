@@ -11,10 +11,24 @@ final class constants$12 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$12() {}
-    static final VarHandle const$0 = constants$0.const$0.varHandle(PathElement.groupElement("colorspace"));
-    static final VarHandle const$1 = constants$0.const$0.varHandle(PathElement.groupElement("color_range"));
-    static final VarHandle const$2 = constants$0.const$0.varHandle(PathElement.groupElement("chroma_sample_location"));
-    static final VarHandle const$3 = constants$0.const$0.varHandle(PathElement.groupElement("slices"));
-    static final VarHandle const$4 = constants$0.const$0.varHandle(PathElement.groupElement("field_order"));
-    static final VarHandle const$5 = constants$0.const$0.varHandle(PathElement.groupElement("sample_rate"));
+    static final VarHandle const$0 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("pix_fmt"));
+    static final FunctionDescriptor const$1 = FunctionDescriptor.ofVoid(
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT
+    );
+    static final MethodHandle const$2 = RuntimeHelper.upcallHandle(AVCodecContext.draw_horiz_band.class, "apply", constants$12.const$1);
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        constants$12.const$1
+    );
+    static final VarHandle const$4 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("draw_horiz_band"));
+    static final FunctionDescriptor const$5 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER
+    );
 }
+
+

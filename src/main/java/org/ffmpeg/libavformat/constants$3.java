@@ -11,10 +11,12 @@ final class constants$3 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$3() {}
-    static final VarHandle const$0 = constants$0.const$0.varHandle(PathElement.groupElement("key"));
-    static final VarHandle const$1 = constants$0.const$0.varHandle(PathElement.groupElement("keylen"));
-    static final VarHandle const$2 = constants$0.const$0.varHandle(PathElement.groupElement("nb_programs"));
-    static final VarHandle const$3 = constants$0.const$0.varHandle(PathElement.groupElement("programs"));
-    static final VarHandle const$4 = constants$0.const$0.varHandle(PathElement.groupElement("video_codec_id"));
-    static final VarHandle const$5 = constants$0.const$0.varHandle(PathElement.groupElement("audio_codec_id"));
+    static final VarHandle const$0 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("iformat"));
+    static final VarHandle const$1 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("oformat"));
+    static final VarHandle const$2 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("priv_data"));
+    static final VarHandle const$3 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("pb"));
+    static final VarHandle const$4 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("ctx_flags"));
+    static final VarHandle const$5 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("nb_streams"));
 }
+
+

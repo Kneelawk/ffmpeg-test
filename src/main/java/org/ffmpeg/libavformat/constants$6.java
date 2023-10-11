@@ -11,10 +11,12 @@ final class constants$6 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$6() {}
-    static final VarHandle const$0 = constants$0.const$0.varHandle(PathElement.groupElement("event_flags"));
-    static final VarHandle const$1 = constants$0.const$0.varHandle(PathElement.groupElement("max_ts_probe"));
-    static final VarHandle const$2 = constants$0.const$0.varHandle(PathElement.groupElement("avoid_negative_ts"));
-    static final VarHandle const$3 = constants$0.const$0.varHandle(PathElement.groupElement("ts_id"));
-    static final VarHandle const$4 = constants$0.const$0.varHandle(PathElement.groupElement("audio_preload"));
-    static final VarHandle const$5 = constants$0.const$0.varHandle(PathElement.groupElement("max_chunk_duration"));
+    static final VarHandle const$0 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("nb_programs"));
+    static final VarHandle const$1 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("programs"));
+    static final VarHandle const$2 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("video_codec_id"));
+    static final VarHandle const$3 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("audio_codec_id"));
+    static final VarHandle const$4 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("subtitle_codec_id"));
+    static final VarHandle const$5 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("max_index_size"));
 }
+
+

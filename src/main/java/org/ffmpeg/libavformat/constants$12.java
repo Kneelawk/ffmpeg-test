@@ -11,12 +11,12 @@ final class constants$12 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$12() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        constants$11.const$4
-    );
-    static final VarHandle const$1 = constants$0.const$0.varHandle(PathElement.groupElement("io_close"));
-    static final VarHandle const$2 = constants$0.const$0.varHandle(PathElement.groupElement("protocol_blacklist"));
-    static final VarHandle const$3 = constants$0.const$0.varHandle(PathElement.groupElement("max_streams"));
-    static final VarHandle const$4 = constants$0.const$0.varHandle(PathElement.groupElement("skip_estimate_duration_from_pts"));
-    static final VarHandle const$5 = constants$0.const$0.varHandle(PathElement.groupElement("max_probe_packets"));
+    static final VarHandle const$0 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("audio_codec"));
+    static final VarHandle const$1 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("subtitle_codec"));
+    static final VarHandle const$2 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("data_codec"));
+    static final VarHandle const$3 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("metadata_header_padding"));
+    static final VarHandle const$4 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("opaque"));
+    static final VarHandle const$5 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("control_message_cb"));
 }
+
+
