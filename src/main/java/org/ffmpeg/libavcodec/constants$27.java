@@ -11,12 +11,12 @@ final class constants$27 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$27() {}
-    static final VarHandle const$0 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("hwaccel_context"));
-    static final VarHandle const$1 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("dct_algo"));
-    static final VarHandle const$2 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("idct_algo"));
-    static final VarHandle const$3 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("bits_per_coded_sample"));
-    static final VarHandle const$4 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("bits_per_raw_sample"));
-    static final VarHandle const$5 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("lowres"));
+    static final VarHandle const$0 = constants$8.const$4.varHandle(MemoryLayout.PathElement.groupElement("error_concealment"));
+    static final VarHandle const$1 = constants$8.const$4.varHandle(MemoryLayout.PathElement.groupElement("debug"));
+    static final VarHandle const$2 = constants$8.const$4.varHandle(MemoryLayout.PathElement.groupElement("err_recognition"));
+    static final VarHandle const$3 = constants$8.const$4.varHandle(MemoryLayout.PathElement.groupElement("reordered_opaque"));
+    static final VarHandle const$4 = constants$8.const$4.varHandle(MemoryLayout.PathElement.groupElement("hwaccel"));
+    static final VarHandle const$5 = constants$8.const$4.varHandle(MemoryLayout.PathElement.groupElement("hwaccel_context"));
 }
 
 

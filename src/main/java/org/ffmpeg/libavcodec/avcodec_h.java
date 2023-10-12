@@ -17,18 +17,114 @@ public class avcodec_h  {
     public static final OfFloat C_FLOAT = JAVA_FLOAT;
     public static final OfDouble C_DOUBLE = JAVA_DOUBLE;
     public static final AddressLayout C_POINTER = RuntimeHelper.POINTER;
-    public static MethodHandle avcodec_close$MH() {
-        return RuntimeHelper.requireNonNull(constants$36.const$2,"avcodec_close");
+    public static MethodHandle av_packet_alloc$MH() {
+        return RuntimeHelper.requireNonNull(constants$2.const$5,"av_packet_alloc");
     }
     /**
      * {@snippet :
-     * int avcodec_close(AVCodecContext* avctx);
+     * AVPacket* av_packet_alloc();
      * }
      */
-    public static int avcodec_close(MemorySegment avctx) {
-        var mh$ = avcodec_close$MH();
+    public static MemorySegment av_packet_alloc() {
+        var mh$ = av_packet_alloc$MH();
         try {
-            return (int)mh$.invokeExact(avctx);
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact();
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle av_packet_free$MH() {
+        return RuntimeHelper.requireNonNull(constants$3.const$1,"av_packet_free");
+    }
+    /**
+     * {@snippet :
+     * void av_packet_free(AVPacket** pkt);
+     * }
+     */
+    public static void av_packet_free(MemorySegment pkt) {
+        var mh$ = av_packet_free$MH();
+        try {
+            mh$.invokeExact(pkt);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle av_packet_unref$MH() {
+        return RuntimeHelper.requireNonNull(constants$3.const$2,"av_packet_unref");
+    }
+    /**
+     * {@snippet :
+     * void av_packet_unref(AVPacket* pkt);
+     * }
+     */
+    public static void av_packet_unref(MemorySegment pkt) {
+        var mh$ = av_packet_unref$MH();
+        try {
+            mh$.invokeExact(pkt);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle avcodec_alloc_context3$MH() {
+        return RuntimeHelper.requireNonNull(constants$37.const$1,"avcodec_alloc_context3");
+    }
+    /**
+     * {@snippet :
+     * AVCodecContext* avcodec_alloc_context3(const AVCodec* codec);
+     * }
+     */
+    public static MemorySegment avcodec_alloc_context3(MemorySegment codec) {
+        var mh$ = avcodec_alloc_context3$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact(codec);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle avcodec_free_context$MH() {
+        return RuntimeHelper.requireNonNull(constants$37.const$2,"avcodec_free_context");
+    }
+    /**
+     * {@snippet :
+     * void avcodec_free_context(AVCodecContext** avctx);
+     * }
+     */
+    public static void avcodec_free_context(MemorySegment avctx) {
+        var mh$ = avcodec_free_context$MH();
+        try {
+            mh$.invokeExact(avctx);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle avcodec_parameters_to_context$MH() {
+        return RuntimeHelper.requireNonNull(constants$37.const$3,"avcodec_parameters_to_context");
+    }
+    /**
+     * {@snippet :
+     * int avcodec_parameters_to_context(AVCodecContext* codec, struct AVCodecParameters* par);
+     * }
+     */
+    public static int avcodec_parameters_to_context(MemorySegment codec, MemorySegment par) {
+        var mh$ = avcodec_parameters_to_context$MH();
+        try {
+            return (int)mh$.invokeExact(codec, par);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle avcodec_open2$MH() {
+        return RuntimeHelper.requireNonNull(constants$37.const$5,"avcodec_open2");
+    }
+    /**
+     * {@snippet :
+     * int avcodec_open2(AVCodecContext* avctx, const AVCodec* codec, AVDictionary** options);
+     * }
+     */
+    public static int avcodec_open2(MemorySegment avctx, MemorySegment codec, MemorySegment options) {
+        var mh$ = avcodec_open2$MH();
+        try {
+            return (int)mh$.invokeExact(avctx, codec, options);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

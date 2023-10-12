@@ -11,12 +11,12 @@ final class constants$26 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$26() {}
-    static final VarHandle const$0 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("strict_std_compliance"));
-    static final VarHandle const$1 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("error_concealment"));
-    static final VarHandle const$2 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("debug"));
-    static final VarHandle const$3 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("err_recognition"));
-    static final VarHandle const$4 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("reordered_opaque"));
-    static final VarHandle const$5 = constants$7.const$5.varHandle(MemoryLayout.PathElement.groupElement("hwaccel"));
+    static final VarHandle const$0 = constants$8.const$4.varHandle(MemoryLayout.PathElement.groupElement("rc_initial_buffer_occupancy"));
+    static final VarHandle const$1 = constants$8.const$4.varHandle(MemoryLayout.PathElement.groupElement("trellis"));
+    static final VarHandle const$2 = constants$8.const$4.varHandle(MemoryLayout.PathElement.groupElement("stats_out"));
+    static final VarHandle const$3 = constants$8.const$4.varHandle(MemoryLayout.PathElement.groupElement("stats_in"));
+    static final VarHandle const$4 = constants$8.const$4.varHandle(MemoryLayout.PathElement.groupElement("workaround_bugs"));
+    static final VarHandle const$5 = constants$8.const$4.varHandle(MemoryLayout.PathElement.groupElement("strict_std_compliance"));
 }
 
 

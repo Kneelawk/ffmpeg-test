@@ -65,8 +65,24 @@ public class avformat_h  {
             throw new AssertionError("should not reach here", ex$);
         }
     }
+    public static MethodHandle av_read_frame$MH() {
+        return RuntimeHelper.requireNonNull(constants$17.const$0,"av_read_frame");
+    }
+    /**
+     * {@snippet :
+     * int av_read_frame(AVFormatContext* s, AVPacket* pkt);
+     * }
+     */
+    public static int av_read_frame(MemorySegment s, MemorySegment pkt) {
+        var mh$ = av_read_frame$MH();
+        try {
+            return (int)mh$.invokeExact(s, pkt);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
     public static MethodHandle avformat_close_input$MH() {
-        return RuntimeHelper.requireNonNull(constants$17.const$1,"avformat_close_input");
+        return RuntimeHelper.requireNonNull(constants$17.const$2,"avformat_close_input");
     }
     /**
      * {@snippet :
@@ -82,7 +98,7 @@ public class avformat_h  {
         }
     }
     public static MethodHandle av_dump_format$MH() {
-        return RuntimeHelper.requireNonNull(constants$17.const$3,"av_dump_format");
+        return RuntimeHelper.requireNonNull(constants$17.const$4,"av_dump_format");
     }
     /**
      * {@snippet :

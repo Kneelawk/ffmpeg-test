@@ -11,22 +11,26 @@ final class constants$17 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$17() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.ofVoid(
+    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
+        "av_read_frame",
+        constants$15.const$4
+    );
+    static final FunctionDescriptor const$1 = FunctionDescriptor.ofVoid(
         RuntimeHelper.POINTER
     );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
         "avformat_close_input",
-        constants$17.const$0
+        constants$17.const$1
     );
-    static final FunctionDescriptor const$2 = FunctionDescriptor.ofVoid(
+    static final FunctionDescriptor const$3 = FunctionDescriptor.ofVoid(
         RuntimeHelper.POINTER,
         JAVA_INT,
         RuntimeHelper.POINTER,
         JAVA_INT
     );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
         "av_dump_format",
-        constants$17.const$2
+        constants$17.const$3
     );
 }
 
