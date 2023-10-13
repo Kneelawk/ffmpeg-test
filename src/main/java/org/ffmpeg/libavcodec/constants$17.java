@@ -11,12 +11,12 @@ final class constants$17 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$17() {}
-    static final VarHandle const$0 = constants$8.const$4.varHandle(MemoryLayout.PathElement.groupElement("ildct_cmp"));
-    static final VarHandle const$1 = constants$8.const$4.varHandle(MemoryLayout.PathElement.groupElement("dia_size"));
-    static final VarHandle const$2 = constants$8.const$4.varHandle(MemoryLayout.PathElement.groupElement("last_predictor_count"));
-    static final VarHandle const$3 = constants$8.const$4.varHandle(MemoryLayout.PathElement.groupElement("me_pre_cmp"));
-    static final VarHandle const$4 = constants$8.const$4.varHandle(MemoryLayout.PathElement.groupElement("pre_dia_size"));
-    static final VarHandle const$5 = constants$8.const$4.varHandle(MemoryLayout.PathElement.groupElement("me_subpel_quality"));
+    static final VarHandle const$0 = constants$11.const$0.varHandle(MemoryLayout.PathElement.groupElement("b_quant_offset"));
+    static final VarHandle const$1 = constants$11.const$0.varHandle(MemoryLayout.PathElement.groupElement("has_b_frames"));
+    static final VarHandle const$2 = constants$11.const$0.varHandle(MemoryLayout.PathElement.groupElement("i_quant_factor"));
+    static final VarHandle const$3 = constants$11.const$0.varHandle(MemoryLayout.PathElement.groupElement("i_quant_offset"));
+    static final VarHandle const$4 = constants$11.const$0.varHandle(MemoryLayout.PathElement.groupElement("lumi_masking"));
+    static final VarHandle const$5 = constants$11.const$0.varHandle(MemoryLayout.PathElement.groupElement("temporal_cplx_masking"));
 }
 
 

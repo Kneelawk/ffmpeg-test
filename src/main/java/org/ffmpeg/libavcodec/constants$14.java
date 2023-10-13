@@ -11,14 +11,12 @@ final class constants$14 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$14() {}
-    static final MethodHandle const$0 = RuntimeHelper.downcallHandle(
-        constants$13.const$4
-    );
-    static final VarHandle const$1 = constants$8.const$4.varHandle(MemoryLayout.PathElement.groupElement("get_format"));
-    static final VarHandle const$2 = constants$8.const$4.varHandle(MemoryLayout.PathElement.groupElement("max_b_frames"));
-    static final VarHandle const$3 = constants$8.const$4.varHandle(MemoryLayout.PathElement.groupElement("b_quant_factor"));
-    static final VarHandle const$4 = constants$8.const$4.varHandle(MemoryLayout.PathElement.groupElement("b_quant_offset"));
-    static final VarHandle const$5 = constants$8.const$4.varHandle(MemoryLayout.PathElement.groupElement("has_b_frames"));
+    static final VarHandle const$0 = constants$11.const$0.varHandle(MemoryLayout.PathElement.groupElement("ticks_per_frame"));
+    static final VarHandle const$1 = constants$11.const$0.varHandle(MemoryLayout.PathElement.groupElement("delay"));
+    static final VarHandle const$2 = constants$11.const$0.varHandle(MemoryLayout.PathElement.groupElement("width"));
+    static final VarHandle const$3 = constants$11.const$0.varHandle(MemoryLayout.PathElement.groupElement("height"));
+    static final VarHandle const$4 = constants$11.const$0.varHandle(MemoryLayout.PathElement.groupElement("coded_width"));
+    static final VarHandle const$5 = constants$11.const$0.varHandle(MemoryLayout.PathElement.groupElement("coded_height"));
 }
 
 

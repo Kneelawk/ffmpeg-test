@@ -11,30 +11,12 @@ final class constants$37 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$37() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
-        "avcodec_alloc_context3",
-        constants$37.const$0
-    );
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "avcodec_free_context",
-        constants$3.const$0
-    );
-    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
-        "avcodec_parameters_to_context",
-        constants$13.const$4
-    );
-    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "avcodec_open2",
-        constants$37.const$4
-    );
+    static final VarHandle const$0 = constants$11.const$0.varHandle(MemoryLayout.PathElement.groupElement("nb_coded_side_data"));
+    static final VarHandle const$1 = constants$11.const$0.varHandle(MemoryLayout.PathElement.groupElement("hw_frames_ctx"));
+    static final VarHandle const$2 = constants$11.const$0.varHandle(MemoryLayout.PathElement.groupElement("trailing_padding"));
+    static final VarHandle const$3 = constants$11.const$0.varHandle(MemoryLayout.PathElement.groupElement("max_pixels"));
+    static final VarHandle const$4 = constants$11.const$0.varHandle(MemoryLayout.PathElement.groupElement("hw_device_ctx"));
+    static final VarHandle const$5 = constants$11.const$0.varHandle(MemoryLayout.PathElement.groupElement("hwaccel_flags"));
 }
 
 

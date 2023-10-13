@@ -11,12 +11,12 @@ final class constants$18 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$18() {}
-    static final VarHandle const$0 = constants$8.const$4.varHandle(MemoryLayout.PathElement.groupElement("me_range"));
-    static final VarHandle const$1 = constants$8.const$4.varHandle(MemoryLayout.PathElement.groupElement("slice_flags"));
-    static final VarHandle const$2 = constants$8.const$4.varHandle(MemoryLayout.PathElement.groupElement("mb_decision"));
-    static final VarHandle const$3 = constants$8.const$4.varHandle(MemoryLayout.PathElement.groupElement("intra_matrix"));
-    static final VarHandle const$4 = constants$8.const$4.varHandle(MemoryLayout.PathElement.groupElement("inter_matrix"));
-    static final VarHandle const$5 = constants$8.const$4.varHandle(MemoryLayout.PathElement.groupElement("intra_dc_precision"));
+    static final VarHandle const$0 = constants$11.const$0.varHandle(MemoryLayout.PathElement.groupElement("spatial_cplx_masking"));
+    static final VarHandle const$1 = constants$11.const$0.varHandle(MemoryLayout.PathElement.groupElement("p_masking"));
+    static final VarHandle const$2 = constants$11.const$0.varHandle(MemoryLayout.PathElement.groupElement("dark_masking"));
+    static final VarHandle const$3 = constants$11.const$0.varHandle(MemoryLayout.PathElement.groupElement("slice_count"));
+    static final VarHandle const$4 = constants$11.const$0.varHandle(MemoryLayout.PathElement.groupElement("slice_offset"));
+    static final VarHandle const$5 = constants$11.const$0.varHandle(MemoryLayout.PathElement.groupElement("me_cmp"));
 }
 
 

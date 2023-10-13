@@ -11,12 +11,16 @@ final class constants$25 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$25() {}
-    static final VarHandle const$0 = constants$8.const$4.varHandle(MemoryLayout.PathElement.groupElement("rc_override_count"));
-    static final VarHandle const$1 = constants$8.const$4.varHandle(MemoryLayout.PathElement.groupElement("rc_override"));
-    static final VarHandle const$2 = constants$8.const$4.varHandle(MemoryLayout.PathElement.groupElement("rc_max_rate"));
-    static final VarHandle const$3 = constants$8.const$4.varHandle(MemoryLayout.PathElement.groupElement("rc_min_rate"));
-    static final VarHandle const$4 = constants$8.const$4.varHandle(MemoryLayout.PathElement.groupElement("rc_max_available_vbv_use"));
-    static final VarHandle const$5 = constants$8.const$4.varHandle(MemoryLayout.PathElement.groupElement("rc_min_vbv_overflow_use"));
+    static final VarHandle const$0 = constants$11.const$0.varHandle(MemoryLayout.PathElement.groupElement("channel_layout"));
+    static final VarHandle const$1 = constants$11.const$0.varHandle(MemoryLayout.PathElement.groupElement("request_channel_layout"));
+    static final VarHandle const$2 = constants$11.const$0.varHandle(MemoryLayout.PathElement.groupElement("audio_service_type"));
+    static final VarHandle const$3 = constants$11.const$0.varHandle(MemoryLayout.PathElement.groupElement("request_sample_fmt"));
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT
+    );
+    static final MethodHandle const$5 = RuntimeHelper.upcallHandle(AVCodecContext.get_buffer2.class, "apply", constants$25.const$4);
 }
 
 

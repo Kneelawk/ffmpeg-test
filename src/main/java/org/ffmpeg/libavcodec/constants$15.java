@@ -11,12 +11,21 @@ final class constants$15 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$15() {}
-    static final VarHandle const$0 = constants$8.const$4.varHandle(MemoryLayout.PathElement.groupElement("i_quant_factor"));
-    static final VarHandle const$1 = constants$8.const$4.varHandle(MemoryLayout.PathElement.groupElement("i_quant_offset"));
-    static final VarHandle const$2 = constants$8.const$4.varHandle(MemoryLayout.PathElement.groupElement("lumi_masking"));
-    static final VarHandle const$3 = constants$8.const$4.varHandle(MemoryLayout.PathElement.groupElement("temporal_cplx_masking"));
-    static final VarHandle const$4 = constants$8.const$4.varHandle(MemoryLayout.PathElement.groupElement("spatial_cplx_masking"));
-    static final VarHandle const$5 = constants$8.const$4.varHandle(MemoryLayout.PathElement.groupElement("p_masking"));
+    static final VarHandle const$0 = constants$11.const$0.varHandle(MemoryLayout.PathElement.groupElement("gop_size"));
+    static final VarHandle const$1 = constants$11.const$0.varHandle(MemoryLayout.PathElement.groupElement("pix_fmt"));
+    static final FunctionDescriptor const$2 = FunctionDescriptor.ofVoid(
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        RuntimeHelper.POINTER,
+        JAVA_INT,
+        JAVA_INT,
+        JAVA_INT
+    );
+    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(AVCodecContext.draw_horiz_band.class, "apply", constants$15.const$2);
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        constants$15.const$2
+    );
+    static final VarHandle const$5 = constants$11.const$0.varHandle(MemoryLayout.PathElement.groupElement("draw_horiz_band"));
 }
 
 

@@ -15,11 +15,28 @@ final class constants$2 {
     static final VarHandle const$1 = constants$0.const$0.varHandle(MemoryLayout.PathElement.groupElement("profiles"));
     static final VarHandle const$2 = constants$0.const$0.varHandle(MemoryLayout.PathElement.groupElement("wrapper_name"));
     static final VarHandle const$3 = constants$0.const$0.varHandle(MemoryLayout.PathElement.groupElement("ch_layouts"));
-    static final FunctionDescriptor const$4 = FunctionDescriptor.of(RuntimeHelper.POINTER);
-    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
-        "av_packet_alloc",
-        constants$2.const$4
-    );
+    static final StructLayout const$4 = MemoryLayout.structLayout(
+        RuntimeHelper.POINTER.withName("buf"),
+        JAVA_LONG.withName("pts"),
+        JAVA_LONG.withName("dts"),
+        RuntimeHelper.POINTER.withName("data"),
+        JAVA_INT.withName("size"),
+        JAVA_INT.withName("stream_index"),
+        JAVA_INT.withName("flags"),
+        MemoryLayout.paddingLayout(4),
+        RuntimeHelper.POINTER.withName("side_data"),
+        JAVA_INT.withName("side_data_elems"),
+        MemoryLayout.paddingLayout(4),
+        JAVA_LONG.withName("duration"),
+        JAVA_LONG.withName("pos"),
+        RuntimeHelper.POINTER.withName("opaque"),
+        RuntimeHelper.POINTER.withName("opaque_ref"),
+        MemoryLayout.structLayout(
+            JAVA_INT.withName("num"),
+            JAVA_INT.withName("den")
+        ).withName("time_base")
+    ).withName("AVPacket");
+    static final VarHandle const$5 = constants$2.const$4.varHandle(MemoryLayout.PathElement.groupElement("buf"));
 }
 
 

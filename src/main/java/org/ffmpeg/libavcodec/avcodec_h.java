@@ -18,7 +18,7 @@ public class avcodec_h  {
     public static final OfDouble C_DOUBLE = JAVA_DOUBLE;
     public static final AddressLayout C_POINTER = RuntimeHelper.POINTER;
     public static MethodHandle av_packet_alloc$MH() {
-        return RuntimeHelper.requireNonNull(constants$2.const$5,"av_packet_alloc");
+        return RuntimeHelper.requireNonNull(constants$5.const$1,"av_packet_alloc");
     }
     /**
      * {@snippet :
@@ -34,7 +34,7 @@ public class avcodec_h  {
         }
     }
     public static MethodHandle av_packet_free$MH() {
-        return RuntimeHelper.requireNonNull(constants$3.const$1,"av_packet_free");
+        return RuntimeHelper.requireNonNull(constants$5.const$3,"av_packet_free");
     }
     /**
      * {@snippet :
@@ -50,7 +50,7 @@ public class avcodec_h  {
         }
     }
     public static MethodHandle av_packet_unref$MH() {
-        return RuntimeHelper.requireNonNull(constants$3.const$2,"av_packet_unref");
+        return RuntimeHelper.requireNonNull(constants$5.const$4,"av_packet_unref");
     }
     /**
      * {@snippet :
@@ -66,7 +66,7 @@ public class avcodec_h  {
         }
     }
     public static MethodHandle avcodec_alloc_context3$MH() {
-        return RuntimeHelper.requireNonNull(constants$37.const$1,"avcodec_alloc_context3");
+        return RuntimeHelper.requireNonNull(constants$39.const$3,"avcodec_alloc_context3");
     }
     /**
      * {@snippet :
@@ -82,7 +82,7 @@ public class avcodec_h  {
         }
     }
     public static MethodHandle avcodec_free_context$MH() {
-        return RuntimeHelper.requireNonNull(constants$37.const$2,"avcodec_free_context");
+        return RuntimeHelper.requireNonNull(constants$39.const$4,"avcodec_free_context");
     }
     /**
      * {@snippet :
@@ -98,7 +98,7 @@ public class avcodec_h  {
         }
     }
     public static MethodHandle avcodec_parameters_to_context$MH() {
-        return RuntimeHelper.requireNonNull(constants$37.const$3,"avcodec_parameters_to_context");
+        return RuntimeHelper.requireNonNull(constants$39.const$5,"avcodec_parameters_to_context");
     }
     /**
      * {@snippet :
@@ -114,7 +114,7 @@ public class avcodec_h  {
         }
     }
     public static MethodHandle avcodec_open2$MH() {
-        return RuntimeHelper.requireNonNull(constants$37.const$5,"avcodec_open2");
+        return RuntimeHelper.requireNonNull(constants$40.const$1,"avcodec_open2");
     }
     /**
      * {@snippet :
@@ -125,6 +125,38 @@ public class avcodec_h  {
         var mh$ = avcodec_open2$MH();
         try {
             return (int)mh$.invokeExact(avctx, codec, options);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle avcodec_send_packet$MH() {
+        return RuntimeHelper.requireNonNull(constants$40.const$2,"avcodec_send_packet");
+    }
+    /**
+     * {@snippet :
+     * int avcodec_send_packet(AVCodecContext* avctx, const AVPacket* avpkt);
+     * }
+     */
+    public static int avcodec_send_packet(MemorySegment avctx, MemorySegment avpkt) {
+        var mh$ = avcodec_send_packet$MH();
+        try {
+            return (int)mh$.invokeExact(avctx, avpkt);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle avcodec_receive_frame$MH() {
+        return RuntimeHelper.requireNonNull(constants$40.const$3,"avcodec_receive_frame");
+    }
+    /**
+     * {@snippet :
+     * int avcodec_receive_frame(AVCodecContext* avctx, AVFrame* frame);
+     * }
+     */
+    public static int avcodec_receive_frame(MemorySegment avctx, MemorySegment frame) {
+        var mh$ = avcodec_receive_frame$MH();
+        try {
+            return (int)mh$.invokeExact(avctx, frame);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

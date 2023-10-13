@@ -19,6 +19,14 @@ public class avutil_h  {
     public static final AddressLayout C_POINTER = RuntimeHelper.POINTER;
     /**
      * {@snippet :
+     * #define EAGAIN 11
+     * }
+     */
+    public static int EAGAIN() {
+        return (int)11L;
+    }
+    /**
+     * {@snippet :
      * enum AVMediaType.AVMEDIA_TYPE_UNKNOWN = -1;
      * }
      */
@@ -72,6 +80,46 @@ public class avutil_h  {
      */
     public static int AVMEDIA_TYPE_NB() {
         return (int)5L;
+    }
+    public static MethodHandle av_frame_alloc$MH() {
+        return RuntimeHelper.requireNonNull(constants$8.const$2,"av_frame_alloc");
+    }
+    /**
+     * {@snippet :
+     * AVFrame* av_frame_alloc();
+     * }
+     */
+    public static MemorySegment av_frame_alloc() {
+        var mh$ = av_frame_alloc$MH();
+        try {
+            return (java.lang.foreign.MemorySegment)mh$.invokeExact();
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle av_frame_free$MH() {
+        return RuntimeHelper.requireNonNull(constants$8.const$4,"av_frame_free");
+    }
+    /**
+     * {@snippet :
+     * void av_frame_free(AVFrame** frame);
+     * }
+     */
+    public static void av_frame_free(MemorySegment frame) {
+        var mh$ = av_frame_free$MH();
+        try {
+            mh$.invokeExact(frame);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    /**
+     * {@snippet :
+     * #define AVERROR_EOF -541478725
+     * }
+     */
+    public static int AVERROR_EOF() {
+        return (int)-541478725L;
     }
 }
 

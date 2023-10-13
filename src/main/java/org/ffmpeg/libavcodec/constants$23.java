@@ -11,18 +11,12 @@ final class constants$23 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$23() {}
-    static final VarHandle const$0 = constants$8.const$4.varHandle(MemoryLayout.PathElement.groupElement("audio_service_type"));
-    static final VarHandle const$1 = constants$8.const$4.varHandle(MemoryLayout.PathElement.groupElement("request_sample_fmt"));
-    static final FunctionDescriptor const$2 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_INT
-    );
-    static final MethodHandle const$3 = RuntimeHelper.upcallHandle(AVCodecContext.get_buffer2.class, "apply", constants$23.const$2);
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        constants$23.const$2
-    );
-    static final VarHandle const$5 = constants$8.const$4.varHandle(MemoryLayout.PathElement.groupElement("get_buffer2"));
+    static final VarHandle const$0 = constants$11.const$0.varHandle(MemoryLayout.PathElement.groupElement("colorspace"));
+    static final VarHandle const$1 = constants$11.const$0.varHandle(MemoryLayout.PathElement.groupElement("color_range"));
+    static final VarHandle const$2 = constants$11.const$0.varHandle(MemoryLayout.PathElement.groupElement("chroma_sample_location"));
+    static final VarHandle const$3 = constants$11.const$0.varHandle(MemoryLayout.PathElement.groupElement("slices"));
+    static final VarHandle const$4 = constants$11.const$0.varHandle(MemoryLayout.PathElement.groupElement("field_order"));
+    static final VarHandle const$5 = constants$11.const$0.varHandle(MemoryLayout.PathElement.groupElement("sample_rate"));
 }
 
 

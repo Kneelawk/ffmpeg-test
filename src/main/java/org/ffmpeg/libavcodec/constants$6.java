@@ -11,12 +11,12 @@ final class constants$6 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$6() {}
-    static final VarHandle const$0 = constants$3.const$3.varHandle(MemoryLayout.PathElement.groupElement("color_range"));
-    static final VarHandle const$1 = constants$3.const$3.varHandle(MemoryLayout.PathElement.groupElement("color_primaries"));
-    static final VarHandle const$2 = constants$3.const$3.varHandle(MemoryLayout.PathElement.groupElement("color_trc"));
-    static final VarHandle const$3 = constants$3.const$3.varHandle(MemoryLayout.PathElement.groupElement("color_space"));
-    static final VarHandle const$4 = constants$3.const$3.varHandle(MemoryLayout.PathElement.groupElement("chroma_location"));
-    static final VarHandle const$5 = constants$3.const$3.varHandle(MemoryLayout.PathElement.groupElement("video_delay"));
+    static final VarHandle const$0 = constants$5.const$5.varHandle(MemoryLayout.PathElement.groupElement("codec_type"));
+    static final VarHandle const$1 = constants$5.const$5.varHandle(MemoryLayout.PathElement.groupElement("codec_id"));
+    static final VarHandle const$2 = constants$5.const$5.varHandle(MemoryLayout.PathElement.groupElement("codec_tag"));
+    static final VarHandle const$3 = constants$5.const$5.varHandle(MemoryLayout.PathElement.groupElement("extradata"));
+    static final VarHandle const$4 = constants$5.const$5.varHandle(MemoryLayout.PathElement.groupElement("extradata_size"));
+    static final VarHandle const$5 = constants$5.const$5.varHandle(MemoryLayout.PathElement.groupElement("format"));
 }
 
 

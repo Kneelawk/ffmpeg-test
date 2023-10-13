@@ -7,13 +7,19 @@ import java.lang.foreign.ValueLayout;
 import org.ffmpeg.libavcodec.AVCodec;
 import org.ffmpeg.libavcodec.AVCodecContext;
 import org.ffmpeg.libavcodec.AVCodecParameters;
+import org.ffmpeg.libavcodec.AVPacket;
 import org.ffmpeg.libavcodec.avcodec_h;
 import org.ffmpeg.libavformat.AVFormatContext;
 import org.ffmpeg.libavformat.AVStream;
 import org.ffmpeg.libavformat.avformat_h;
+import org.ffmpeg.libavutil.AVFrame;
+import org.ffmpeg.libavutil.AVRational;
 import org.ffmpeg.libavutil.avutil_h;
 
 public class FfmpegTest {
+    private static long videoFramesRead = 0;
+    private static long audioFramesRead = 0;
+
     public static void main(String[] args) {
         System.out.println("Starting up ffmpeg...");
 
@@ -84,6 +90,13 @@ public class FfmpegTest {
                 System.out.println("Video: (" + videoIndex + ") " + AVCodec.long_name$get(videoCodec).getUtf8String(0));
                 System.out.println("Audio: (" + audioIndex + ") " + AVCodec.long_name$get(audioCodec).getUtf8String(0));
 
+                MemorySegment videoTimeBase = AVRational.ofAddress(AVStream.time_base$slice(videoStream), confined);
+                int videoNum = AVRational.num$get(videoTimeBase);
+                int videoDen = AVRational.den$get(videoTimeBase);
+                MemorySegment audioTimeBase = AVRational.ofAddress(AVStream.time_base$slice(audioStream), confined);
+                int audioNum = AVRational.num$get(audioTimeBase);
+                int audioDen = AVRational.den$get(audioTimeBase);
+
                 MemorySegment videoCtx =
                     AVCodecContext.ofAddress(avcodec_h.avcodec_alloc_context3(videoCodec), confined);
                 MemorySegment audioCtx =
@@ -117,25 +130,68 @@ public class FfmpegTest {
                         return;
                     }
 
-                    MemorySegment packet = avcodec_h.av_packet_alloc();
+                    MemorySegment packet = AVPacket.ofAddress(avcodec_h.av_packet_alloc(), confined);
                     if (packet.address() == 0) {
                         System.err.println("Error allocating packet.");
                         return;
                     }
+                    MemorySegment frame = AVFrame.ofAddress(avutil_h.av_frame_alloc(), confined);
+                    if (frame.address() == 0) {
+                        System.err.println("Error allocating frame.");
+                        return;
+                    }
 
-                    System.out.println("Reading file...");
+                    System.out.println("Reading frames...");
                     try {
                         while (avformat_h.av_read_frame(ctx, packet) >= 0) {
-                            // TODO: use packet
+                            int streamIndex = AVPacket.stream_index$get(packet);
+                            MemorySegment codecCtx;
+                            if (streamIndex == videoIndex) {
+                                codecCtx = videoCtx;
+                            } else if (streamIndex == audioIndex) {
+                                codecCtx = audioCtx;
+                            } else {
+                                // packet belongs to neither stream
+                                continue;
+                            }
+
+                            res = avcodec_h.avcodec_send_packet(codecCtx, packet);
+                            if (res < 0 && res != -avutil_h.EAGAIN()) {
+                                System.err.println("Error reading packet.");
+                                continue;
+                            }
+
+                            receiveFrames(codecCtx, frame, streamIndex, videoIndex, videoNum, videoDen, audioNum,
+                                audioDen);
 
                             avcodec_h.av_packet_unref(packet);
                         }
 
-                        System.out.println("File read.");
+                        System.out.println("Draining codecs...");
+
+                        while ((res = avcodec_h.avcodec_send_packet(videoCtx, MemorySegment.NULL)) >= 0) {
+                            receiveFrames(videoCtx, frame, videoIndex, videoIndex, videoNum, videoDen, audioNum,
+                                audioDen);
+                        }
+                        if (res != avutil_h.AVERROR_EOF()) {
+                            System.err.println("Error draining video codec.");
+                        }
+
+                        while ((res = avcodec_h.avcodec_send_packet(audioCtx, MemorySegment.NULL)) >= 0) {
+                            receiveFrames(videoCtx, frame, audioIndex, videoIndex, videoNum, videoDen, audioNum,
+                                audioDen);
+                        }
+                        if (res != avutil_h.AVERROR_EOF()) {
+                            System.err.println("Error draining audio codec.");
+                        }
+
+                        System.out.println("Finished reading.");
                     } finally {
-                        // free packet
+                        // free packet & frame
                         MemorySegment packetRef = confined.allocate(ValueLayout.ADDRESS, packet);
+                        MemorySegment frameRef = confined.allocate(ValueLayout.ADDRESS, frame);
                         avcodec_h.av_packet_free(packetRef);
+                        avutil_h.av_frame_free(frameRef);
                     }
                 } finally {
                     // close decoder contexts
@@ -149,6 +205,32 @@ public class FfmpegTest {
                 // close demuxer context
                 avformat_h.avformat_close_input(ctxRef);
             }
+        }
+    }
+
+    private static void receiveFrames(MemorySegment codecCtx, MemorySegment frame, int streamIndex, int videoIndex,
+                                      int videoNum, double videoDen, int audioNum, double audioDen) {
+        int res;
+        while ((res = avcodec_h.avcodec_receive_frame(codecCtx, frame)) >= 0) {
+            // TODO: use frame
+
+            if (streamIndex == videoIndex) {
+                videoFramesRead++;
+                if (videoFramesRead % 100 == 0) {
+                    System.out.println(
+                        "VIDEO: (" + videoFramesRead + ") " + (AVFrame.pts$get(frame) * videoNum / videoDen) + "s");
+                }
+            } else {
+                audioFramesRead++;
+                if (audioFramesRead % 100 == 0) {
+                    System.out.println(
+                        "AUDIO: (" + audioFramesRead + ") " + (AVFrame.pts$get(frame) * audioNum / audioDen) + "s");
+                }
+            }
+        }
+
+        if (res != -avutil_h.EAGAIN() && res != avutil_h.AVERROR_EOF()) {
+            System.err.println("Error reading frame.");
         }
     }
 }

@@ -11,20 +11,12 @@ final class constants$30 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$30() {}
-    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        RuntimeHelper.POINTER,
-        JAVA_INT
-    );
-    static final MethodHandle const$1 = RuntimeHelper.upcallHandle(AVCodecContext.execute2.class, "apply", constants$30.const$0);
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        constants$30.const$0
-    );
-    static final VarHandle const$3 = constants$8.const$4.varHandle(MemoryLayout.PathElement.groupElement("execute2"));
-    static final VarHandle const$4 = constants$8.const$4.varHandle(MemoryLayout.PathElement.groupElement("nsse_weight"));
-    static final VarHandle const$5 = constants$8.const$4.varHandle(MemoryLayout.PathElement.groupElement("profile"));
+    static final VarHandle const$0 = constants$11.const$0.varHandle(MemoryLayout.PathElement.groupElement("hwaccel"));
+    static final VarHandle const$1 = constants$11.const$0.varHandle(MemoryLayout.PathElement.groupElement("hwaccel_context"));
+    static final VarHandle const$2 = constants$11.const$0.varHandle(MemoryLayout.PathElement.groupElement("dct_algo"));
+    static final VarHandle const$3 = constants$11.const$0.varHandle(MemoryLayout.PathElement.groupElement("idct_algo"));
+    static final VarHandle const$4 = constants$11.const$0.varHandle(MemoryLayout.PathElement.groupElement("bits_per_coded_sample"));
+    static final VarHandle const$5 = constants$11.const$0.varHandle(MemoryLayout.PathElement.groupElement("bits_per_raw_sample"));
 }
 
 

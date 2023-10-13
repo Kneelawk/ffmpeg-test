@@ -11,12 +11,75 @@ final class constants$5 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$5() {}
-    static final VarHandle const$0 = constants$3.const$3.varHandle(MemoryLayout.PathElement.groupElement("bits_per_raw_sample"));
-    static final VarHandle const$1 = constants$3.const$3.varHandle(MemoryLayout.PathElement.groupElement("profile"));
-    static final VarHandle const$2 = constants$3.const$3.varHandle(MemoryLayout.PathElement.groupElement("level"));
-    static final VarHandle const$3 = constants$3.const$3.varHandle(MemoryLayout.PathElement.groupElement("width"));
-    static final VarHandle const$4 = constants$3.const$3.varHandle(MemoryLayout.PathElement.groupElement("height"));
-    static final VarHandle const$5 = constants$3.const$3.varHandle(MemoryLayout.PathElement.groupElement("field_order"));
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(RuntimeHelper.POINTER);
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "av_packet_alloc",
+        constants$5.const$0
+    );
+    static final FunctionDescriptor const$2 = FunctionDescriptor.ofVoid(
+        RuntimeHelper.POINTER
+    );
+    static final MethodHandle const$3 = RuntimeHelper.downcallHandle(
+        "av_packet_free",
+        constants$5.const$2
+    );
+    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
+        "av_packet_unref",
+        constants$5.const$2
+    );
+    static final StructLayout const$5 = MemoryLayout.structLayout(
+        JAVA_INT.withName("codec_type"),
+        JAVA_INT.withName("codec_id"),
+        JAVA_INT.withName("codec_tag"),
+        MemoryLayout.paddingLayout(4),
+        RuntimeHelper.POINTER.withName("extradata"),
+        JAVA_INT.withName("extradata_size"),
+        JAVA_INT.withName("format"),
+        JAVA_LONG.withName("bit_rate"),
+        JAVA_INT.withName("bits_per_coded_sample"),
+        JAVA_INT.withName("bits_per_raw_sample"),
+        JAVA_INT.withName("profile"),
+        JAVA_INT.withName("level"),
+        JAVA_INT.withName("width"),
+        JAVA_INT.withName("height"),
+        MemoryLayout.structLayout(
+            JAVA_INT.withName("num"),
+            JAVA_INT.withName("den")
+        ).withName("sample_aspect_ratio"),
+        JAVA_INT.withName("field_order"),
+        JAVA_INT.withName("color_range"),
+        JAVA_INT.withName("color_primaries"),
+        JAVA_INT.withName("color_trc"),
+        JAVA_INT.withName("color_space"),
+        JAVA_INT.withName("chroma_location"),
+        JAVA_INT.withName("video_delay"),
+        MemoryLayout.paddingLayout(4),
+        JAVA_LONG.withName("channel_layout"),
+        JAVA_INT.withName("channels"),
+        JAVA_INT.withName("sample_rate"),
+        JAVA_INT.withName("block_align"),
+        JAVA_INT.withName("frame_size"),
+        JAVA_INT.withName("initial_padding"),
+        JAVA_INT.withName("trailing_padding"),
+        JAVA_INT.withName("seek_preroll"),
+        MemoryLayout.paddingLayout(4),
+        MemoryLayout.structLayout(
+            JAVA_INT.withName("order"),
+            JAVA_INT.withName("nb_channels"),
+            MemoryLayout.unionLayout(
+                JAVA_LONG.withName("mask"),
+                RuntimeHelper.POINTER.withName("map")
+            ).withName("u"),
+            RuntimeHelper.POINTER.withName("opaque")
+        ).withName("ch_layout"),
+        MemoryLayout.structLayout(
+            JAVA_INT.withName("num"),
+            JAVA_INT.withName("den")
+        ).withName("framerate"),
+        RuntimeHelper.POINTER.withName("coded_side_data"),
+        JAVA_INT.withName("nb_coded_side_data"),
+        MemoryLayout.paddingLayout(4)
+    ).withName("AVCodecParameters");
 }
 
 
