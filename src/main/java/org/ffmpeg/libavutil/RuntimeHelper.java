@@ -13,19 +13,11 @@ import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles;
 import java.lang.invoke.MethodType;
-import java.io.File;
-import java.nio.file.Path;
-import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
-import java.util.Optional;
-import java.util.stream.Stream;
 
 import java.lang.foreign.AddressLayout;
-import java.lang.foreign.MemoryLayout;
 
-import com.kneelawk.ffmpegtest.Loader;
+import com.kneelawk.ffmpegtest.natives.NativeLoader;
 
-import static java.lang.foreign.Linker.*;
 import static java.lang.foreign.ValueLayout.*;
 
 final class RuntimeHelper {
@@ -42,7 +34,7 @@ final class RuntimeHelper {
 
     static {
         
-        SymbolLookup loaderLookup = Loader.getLibrary("libavutil");
+        SymbolLookup loaderLookup = NativeLoader.getLibrary("libavutil");
         SYMBOL_LOOKUP = name -> loaderLookup.find(name).or(() -> LINKER.defaultLookup().find(name));
     }
 

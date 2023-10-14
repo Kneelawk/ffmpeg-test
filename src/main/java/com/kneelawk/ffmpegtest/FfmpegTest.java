@@ -16,6 +16,8 @@ import org.ffmpeg.libavutil.AVFrame;
 import org.ffmpeg.libavutil.AVRational;
 import org.ffmpeg.libavutil.avutil_h;
 
+import com.kneelawk.ffmpegtest.natives.Natives;
+
 public class FfmpegTest {
     private static long videoFramesRead = 0;
     private static long audioFramesRead = 0;
@@ -23,20 +25,13 @@ public class FfmpegTest {
     public static void main(String[] args) {
         System.out.println("Starting up ffmpeg...");
 
-        // These libraries *must* be loaded in a specific order
-        Loader.load(new Loader.Library[]{
-            new Loader.Library("libavutil", "ffmpeg-master-latest-linux64-lgpl-shared/lib/libavutil.so"),
-            new Loader.Library("libswresample", "ffmpeg-master-latest-linux64-lgpl-shared/lib/libswresample.so"),
-            new Loader.Library("libswscale", "ffmpeg-master-latest-linux64-lgpl-shared/lib/libswscale.so"),
-            new Loader.Library("libavcodec", "ffmpeg-master-latest-linux64-lgpl-shared/lib/libavcodec.so"),
-            new Loader.Library("libavformat", "ffmpeg-master-latest-linux64-lgpl-shared/lib/libavformat.so")
-        });
+        Natives.load();
 
         System.out.println("Loading file...");
 
         try (Arena confined = Arena.ofConfined()) {
             MemorySegment ctxRef = confined.allocate(ValueLayout.ADDRESS, MemorySegment.NULL);
-            MemorySegment url = confined.allocateUtf8String("tears_of_steel_1080p.webm");
+            MemorySegment url = confined.allocateUtf8String("imagination-engine-1920x1080-av1.webm");
 
             int res = avformat_h.avformat_open_input(ctxRef, url, MemorySegment.NULL, MemorySegment.NULL);
             if (res != 0) {
