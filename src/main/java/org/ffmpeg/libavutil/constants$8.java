@@ -11,19 +11,12 @@ final class constants$8 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$8() {}
-    static final VarHandle const$0 = constants$0.const$3.varHandle(MemoryLayout.PathElement.groupElement("duration"));
-    static final FunctionDescriptor const$1 = FunctionDescriptor.of(RuntimeHelper.POINTER);
-    static final MethodHandle const$2 = RuntimeHelper.downcallHandle(
-        "av_frame_alloc",
-        constants$8.const$1
-    );
-    static final FunctionDescriptor const$3 = FunctionDescriptor.ofVoid(
-        RuntimeHelper.POINTER
-    );
-    static final MethodHandle const$4 = RuntimeHelper.downcallHandle(
-        "av_frame_free",
-        constants$8.const$3
-    );
+    static final VarHandle const$0 = constants$2.const$2.varHandle(MemoryLayout.PathElement.groupElement("metadata"));
+    static final VarHandle const$1 = constants$2.const$2.varHandle(MemoryLayout.PathElement.groupElement("decode_error_flags"));
+    static final VarHandle const$2 = constants$2.const$2.varHandle(MemoryLayout.PathElement.groupElement("channels"));
+    static final VarHandle const$3 = constants$2.const$2.varHandle(MemoryLayout.PathElement.groupElement("pkt_size"));
+    static final VarHandle const$4 = constants$2.const$2.varHandle(MemoryLayout.PathElement.groupElement("hw_frames_ctx"));
+    static final VarHandle const$5 = constants$2.const$2.varHandle(MemoryLayout.PathElement.groupElement("opaque_ref"));
 }
 
 

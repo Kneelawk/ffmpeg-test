@@ -23,8 +23,11 @@ public class FfmpegTest {
     public static void main(String[] args) {
         System.out.println("Starting up ffmpeg...");
 
+        // These libraries *must* be loaded in a specific order
         Loader.load(new Loader.Library[]{
             new Loader.Library("libavutil", "ffmpeg-master-latest-linux64-lgpl-shared/lib/libavutil.so"),
+            new Loader.Library("libswresample", "ffmpeg-master-latest-linux64-lgpl-shared/lib/libswresample.so"),
+            new Loader.Library("libswscale", "ffmpeg-master-latest-linux64-lgpl-shared/lib/libswscale.so"),
             new Loader.Library("libavcodec", "ffmpeg-master-latest-linux64-lgpl-shared/lib/libavcodec.so"),
             new Loader.Library("libavformat", "ffmpeg-master-latest-linux64-lgpl-shared/lib/libavformat.so")
         });

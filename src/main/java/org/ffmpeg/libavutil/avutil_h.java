@@ -81,8 +81,40 @@ public class avutil_h  {
     public static int AVMEDIA_TYPE_NB() {
         return (int)5L;
     }
+    public static MethodHandle av_channel_layout_from_mask$MH() {
+        return RuntimeHelper.requireNonNull(constants$1.const$5,"av_channel_layout_from_mask");
+    }
+    /**
+     * {@snippet :
+     * int av_channel_layout_from_mask(AVChannelLayout* channel_layout, uint64_t mask);
+     * }
+     */
+    public static int av_channel_layout_from_mask(MemorySegment channel_layout, long mask) {
+        var mh$ = av_channel_layout_from_mask$MH();
+        try {
+            return (int)mh$.invokeExact(channel_layout, mask);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
+    public static MethodHandle av_channel_layout_uninit$MH() {
+        return RuntimeHelper.requireNonNull(constants$2.const$1,"av_channel_layout_uninit");
+    }
+    /**
+     * {@snippet :
+     * void av_channel_layout_uninit(AVChannelLayout* channel_layout);
+     * }
+     */
+    public static void av_channel_layout_uninit(MemorySegment channel_layout) {
+        var mh$ = av_channel_layout_uninit$MH();
+        try {
+            mh$.invokeExact(channel_layout);
+        } catch (Throwable ex$) {
+            throw new AssertionError("should not reach here", ex$);
+        }
+    }
     public static MethodHandle av_frame_alloc$MH() {
-        return RuntimeHelper.requireNonNull(constants$8.const$2,"av_frame_alloc");
+        return RuntimeHelper.requireNonNull(constants$10.const$1,"av_frame_alloc");
     }
     /**
      * {@snippet :
@@ -98,7 +130,7 @@ public class avutil_h  {
         }
     }
     public static MethodHandle av_frame_free$MH() {
-        return RuntimeHelper.requireNonNull(constants$8.const$4,"av_frame_free");
+        return RuntimeHelper.requireNonNull(constants$10.const$2,"av_frame_free");
     }
     /**
      * {@snippet :
@@ -120,6 +152,14 @@ public class avutil_h  {
      */
     public static int AVERROR_EOF() {
         return (int)-541478725L;
+    }
+    /**
+     * {@snippet :
+     * #define AV_CH_LAYOUT_STEREO 3
+     * }
+     */
+    public static long AV_CH_LAYOUT_STEREO() {
+        return 3L;
     }
 }
 

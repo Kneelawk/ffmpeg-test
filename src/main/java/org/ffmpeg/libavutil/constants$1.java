@@ -11,12 +11,21 @@ final class constants$1 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$1() {}
-    static final VarHandle const$0 = constants$0.const$3.varHandle(MemoryLayout.PathElement.groupElement("height"));
-    static final VarHandle const$1 = constants$0.const$3.varHandle(MemoryLayout.PathElement.groupElement("nb_samples"));
-    static final VarHandle const$2 = constants$0.const$3.varHandle(MemoryLayout.PathElement.groupElement("format"));
-    static final VarHandle const$3 = constants$0.const$3.varHandle(MemoryLayout.PathElement.groupElement("key_frame"));
-    static final VarHandle const$4 = constants$0.const$3.varHandle(MemoryLayout.PathElement.groupElement("pict_type"));
-    static final VarHandle const$5 = constants$0.const$3.varHandle(MemoryLayout.PathElement.groupElement("pts"));
+    static final UnionLayout const$0 = MemoryLayout.unionLayout(
+        JAVA_LONG.withName("mask"),
+        RuntimeHelper.POINTER.withName("map")
+    ).withName("");
+    static final VarHandle const$1 = constants$1.const$0.varHandle(MemoryLayout.PathElement.groupElement("mask"));
+    static final VarHandle const$2 = constants$1.const$0.varHandle(MemoryLayout.PathElement.groupElement("map"));
+    static final VarHandle const$3 = constants$0.const$3.varHandle(MemoryLayout.PathElement.groupElement("opaque"));
+    static final FunctionDescriptor const$4 = FunctionDescriptor.of(JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_LONG
+    );
+    static final MethodHandle const$5 = RuntimeHelper.downcallHandle(
+        "av_channel_layout_from_mask",
+        constants$1.const$4
+    );
 }
 
 
