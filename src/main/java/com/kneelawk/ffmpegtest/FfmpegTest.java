@@ -3,6 +3,16 @@ package com.kneelawk.ffmpegtest;
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
+import java.nio.ByteOrder;
+import java.util.Arrays;
+
+import javax.sound.sampled.AudioFormat;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Line;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.Mixer;
+import javax.sound.sampled.Port;
+import javax.sound.sampled.SourceDataLine;
 
 import org.ffmpeg.libavcodec.AVCodec;
 import org.ffmpeg.libavcodec.AVCodecContext;
@@ -12,9 +22,11 @@ import org.ffmpeg.libavcodec.avcodec_h;
 import org.ffmpeg.libavformat.AVFormatContext;
 import org.ffmpeg.libavformat.AVStream;
 import org.ffmpeg.libavformat.avformat_h;
+import org.ffmpeg.libavutil.AVChannelLayout;
 import org.ffmpeg.libavutil.AVFrame;
 import org.ffmpeg.libavutil.AVRational;
 import org.ffmpeg.libavutil.avutil_h;
+import org.ffmpeg.libswresample.swresample_h;
 
 import com.kneelawk.ffmpegtest.natives.Natives;
 
@@ -26,6 +38,46 @@ public class FfmpegTest {
         System.out.println("Starting up ffmpeg...");
 
         Natives.load();
+
+        System.out.println("Starting up Java Sound...");
+
+        System.out.println("Mixers:");
+        for (Mixer.Info mixerInfo : AudioSystem.getMixerInfo()) {
+            System.out.println("  Name: " + mixerInfo.getName());
+            System.out.println("  Description: " + mixerInfo.getDescription());
+            System.out.println("  Vendor: " + mixerInfo.getVendor());
+            System.out.println("  Version: " + mixerInfo.getVersion());
+
+            Mixer mixer = AudioSystem.getMixer(mixerInfo);
+            System.out.println("  Source Lines:");
+            for (Line.Info lineInfo : mixer.getSourceLineInfo()) {
+                System.out.println("    Info: " + lineInfo);
+                System.out.println("    Class: " + lineInfo.getLineClass());
+
+                try {
+                    Line line = mixer.getLine(lineInfo);
+                    if (line instanceof SourceDataLine source) {
+                        AudioFormat format = source.getFormat();
+                        System.out.println("    Format: " + format);
+                    }
+                } catch (LineUnavailableException e) {
+                    System.out.println("    Line Unavailable.");
+                }
+            }
+
+            System.out.println();
+        }
+
+        AudioFormat audioFormat = new AudioFormat(AudioFormat.Encoding.PCM_SIGNED, 48000, 32, 2, 8, 48000,
+            ByteOrder.nativeOrder().equals(ByteOrder.BIG_ENDIAN));
+        SourceDataLine audioOut;
+        try {
+            audioOut =
+                AudioSystem.getSourceDataLine(audioFormat);
+            audioOut.open(audioFormat);
+        } catch (LineUnavailableException e) {
+            throw new RuntimeException(e);
+        }
 
         System.out.println("Loading file...");
 
@@ -139,52 +191,88 @@ public class FfmpegTest {
                         return;
                     }
 
-                    System.out.println("Reading frames...");
+                    MemorySegment audioLayout = AVChannelLayout.allocate(confined);
+                    avutil_h.av_channel_layout_from_mask(audioLayout, avutil_h.AV_CH_LAYOUT_STEREO());
+                    int audioChannelCount = AVChannelLayout.nb_channels$get(audioLayout);
+                    MemorySegment audioFrame = AVFrame.ofAddress(avutil_h.av_frame_alloc(), confined);
+                    if (audioFrame.address() == 0) {
+                        System.err.println("Error allocating audio frame.");
+                        return;
+                    }
+                    int audioBufferSize = avutil_h.av_samples_get_buffer_size(MemorySegment.NULL, audioChannelCount, 1,
+                        avutil_h.AV_SAMPLE_FMT_S32(), 0);
+                    MemorySegment audioBuffer = confined.allocate(audioBufferSize);
+                    AVFrame.nb_samples$set(audioFrame, 1);
+                    AVFrame.format$set(audioFrame, avutil_h.AV_SAMPLE_FMT_S32());
+                    AVFrame.sample_rate$set(audioFrame, 48000);
+                    AVChannelLayout.ofAddress(AVFrame.ch_layout$slice(audioFrame), confined).copyFrom(audioLayout);
+
+                    avutil_h.av_samples_fill_arrays(AVFrame.data$slice(audioFrame), AVFrame.linesize$slice(audioFrame),
+                        audioBuffer, audioChannelCount, 1, avutil_h.AV_SAMPLE_FMT_S32(), 0);
+
                     try {
-                        while (avformat_h.av_read_frame(ctx, packet) >= 0) {
-                            int streamIndex = AVPacket.stream_index$get(packet);
-                            MemorySegment codecCtx;
-                            if (streamIndex == videoIndex) {
-                                codecCtx = videoCtx;
-                            } else if (streamIndex == audioIndex) {
-                                codecCtx = audioCtx;
-                            } else {
-                                // packet belongs to neither stream
-                                continue;
+                        MemorySegment swrCtxRef = confined.allocate(ValueLayout.ADDRESS, MemorySegment.NULL);
+                        swresample_h.swr_alloc_set_opts2(swrCtxRef, audioLayout, avutil_h.AV_SAMPLE_FMT_S32(), 48000,
+                            AVCodecContext.ch_layout$slice(audioCtx), AVCodecContext.sample_fmt$get(audioCtx),
+                            AVCodecContext.sample_rate$get(audioCtx), 0, MemorySegment.NULL);
+                        MemorySegment swrCtx = swrCtxRef.get(ValueLayout.ADDRESS, 0);
+                        if (swresample_h.swr_init(swrCtx) < 0) {
+                            System.out.println("Error initializing resample context.");
+                            return;
+                        }
+
+                        try {
+                            System.out.println("Reading frames...");
+                            while (avformat_h.av_read_frame(ctx, packet) >= 0) {
+                                int streamIndex = AVPacket.stream_index$get(packet);
+                                MemorySegment codecCtx;
+                                if (streamIndex == videoIndex) {
+                                    codecCtx = videoCtx;
+                                } else if (streamIndex == audioIndex) {
+                                    codecCtx = audioCtx;
+                                } else {
+                                    // packet belongs to neither stream
+                                    continue;
+                                }
+
+                                res = avcodec_h.avcodec_send_packet(codecCtx, packet);
+                                if (res < 0 && res != -avutil_h.EAGAIN()) {
+                                    System.err.println("Error reading packet.");
+                                    continue;
+                                }
+
+                                receiveFrames(codecCtx, frame, streamIndex, videoIndex, videoNum, videoDen, audioNum,
+                                    audioDen, swrCtx, audioFrame, audioBuffer, audioOut);
+
+                                avcodec_h.av_packet_unref(packet);
                             }
 
-                            res = avcodec_h.avcodec_send_packet(codecCtx, packet);
-                            if (res < 0 && res != -avutil_h.EAGAIN()) {
-                                System.err.println("Error reading packet.");
-                                continue;
+                            System.out.println("Draining codecs...");
+
+                            while ((res = avcodec_h.avcodec_send_packet(videoCtx, MemorySegment.NULL)) >= 0) {
+                                receiveFrames(videoCtx, frame, videoIndex, videoIndex, videoNum, videoDen, audioNum,
+                                    audioDen, swrCtx, audioFrame, audioBuffer, audioOut);
+                            }
+                            if (res != avutil_h.AVERROR_EOF()) {
+                                System.err.println("Error draining video codec.");
                             }
 
-                            receiveFrames(codecCtx, frame, streamIndex, videoIndex, videoNum, videoDen, audioNum,
-                                audioDen);
+                            while ((res = avcodec_h.avcodec_send_packet(audioCtx, MemorySegment.NULL)) >= 0) {
+                                receiveFrames(videoCtx, frame, audioIndex, videoIndex, videoNum, videoDen, audioNum,
+                                    audioDen, swrCtx, audioFrame, audioBuffer, audioOut);
+                            }
+                            if (res != avutil_h.AVERROR_EOF()) {
+                                System.err.println("Error draining audio codec.");
+                            }
 
-                            avcodec_h.av_packet_unref(packet);
+                            System.out.println("Finished reading.");
+                        } finally {
+                            swresample_h.swr_free(swrCtxRef);
                         }
-
-                        System.out.println("Draining codecs...");
-
-                        while ((res = avcodec_h.avcodec_send_packet(videoCtx, MemorySegment.NULL)) >= 0) {
-                            receiveFrames(videoCtx, frame, videoIndex, videoIndex, videoNum, videoDen, audioNum,
-                                audioDen);
-                        }
-                        if (res != avutil_h.AVERROR_EOF()) {
-                            System.err.println("Error draining video codec.");
-                        }
-
-                        while ((res = avcodec_h.avcodec_send_packet(audioCtx, MemorySegment.NULL)) >= 0) {
-                            receiveFrames(videoCtx, frame, audioIndex, videoIndex, videoNum, videoDen, audioNum,
-                                audioDen);
-                        }
-                        if (res != avutil_h.AVERROR_EOF()) {
-                            System.err.println("Error draining audio codec.");
-                        }
-
-                        System.out.println("Finished reading.");
                     } finally {
+                        MemorySegment audioFrameRef = confined.allocate(ValueLayout.ADDRESS, audioFrame);
+                        avutil_h.av_frame_free(audioFrameRef);
+                        avutil_h.av_channel_layout_uninit(audioLayout);
                         // free packet & frame
                         MemorySegment packetRef = confined.allocate(ValueLayout.ADDRESS, packet);
                         MemorySegment frameRef = confined.allocate(ValueLayout.ADDRESS, frame);
@@ -207,10 +295,20 @@ public class FfmpegTest {
     }
 
     private static void receiveFrames(MemorySegment codecCtx, MemorySegment frame, int streamIndex, int videoIndex,
-                                      int videoNum, double videoDen, int audioNum, double audioDen) {
+                                      int videoNum, double videoDen, int audioNum, double audioDen,
+                                      MemorySegment swrCtx, MemorySegment audioFrame, MemorySegment audioBuffer,
+                                      SourceDataLine audioOut) {
         int res;
         while ((res = avcodec_h.avcodec_receive_frame(codecCtx, frame)) >= 0) {
             // TODO: use frame
+            if (streamIndex != videoIndex) {
+                if (swresample_h.swr_convert_frame(swrCtx, audioFrame, frame) < 0) {
+                    System.err.println("Error converting audio frame.");
+                } else {
+                    byte[] audioData = audioBuffer.toArray(ValueLayout.JAVA_BYTE);
+                    audioOut.write(audioData, 0, audioData.length);
+                }
+            }
 
             if (streamIndex == videoIndex) {
                 videoFramesRead++;

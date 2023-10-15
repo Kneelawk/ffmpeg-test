@@ -7,6 +7,9 @@ build/
 imagination-engine-1920x1080-av1.webm
 tears_of_steel_1080p.webm
 
+# Sometimes Java segfaults
+hs_err_pid*
+
 ### IntelliJ IDEA ###
 .idea/
 *.iws

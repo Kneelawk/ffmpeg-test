@@ -11,13 +11,22 @@ final class constants$0 {
 
     // Suppresses default constructor, ensuring non-instantiability.
     private constants$0() {}
-    static final StructLayout const$0 = MemoryLayout.structLayout(
+    static final FunctionDescriptor const$0 = FunctionDescriptor.of(JAVA_INT,
+        JAVA_INT,
+        RuntimeHelper.POINTER,
+        JAVA_LONG
+    );
+    static final MethodHandle const$1 = RuntimeHelper.downcallHandle(
+        "av_strerror",
+        constants$0.const$0
+    );
+    static final StructLayout const$2 = MemoryLayout.structLayout(
         JAVA_INT.withName("num"),
         JAVA_INT.withName("den")
     ).withName("AVRational");
-    static final VarHandle const$1 = constants$0.const$0.varHandle(MemoryLayout.PathElement.groupElement("num"));
-    static final VarHandle const$2 = constants$0.const$0.varHandle(MemoryLayout.PathElement.groupElement("den"));
-    static final StructLayout const$3 = MemoryLayout.structLayout(
+    static final VarHandle const$3 = constants$0.const$2.varHandle(MemoryLayout.PathElement.groupElement("num"));
+    static final VarHandle const$4 = constants$0.const$2.varHandle(MemoryLayout.PathElement.groupElement("den"));
+    static final StructLayout const$5 = MemoryLayout.structLayout(
         JAVA_INT.withName("order"),
         JAVA_INT.withName("nb_channels"),
         MemoryLayout.unionLayout(
@@ -26,8 +35,6 @@ final class constants$0 {
         ).withName("u"),
         RuntimeHelper.POINTER.withName("opaque")
     ).withName("AVChannelLayout");
-    static final VarHandle const$4 = constants$0.const$3.varHandle(MemoryLayout.PathElement.groupElement("order"));
-    static final VarHandle const$5 = constants$0.const$3.varHandle(MemoryLayout.PathElement.groupElement("nb_channels"));
 }
 
 
